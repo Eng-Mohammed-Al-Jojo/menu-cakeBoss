@@ -88,27 +88,13 @@ export default function ItemDetailModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 36, scale: 0.97 }}
             transition={{ type: "spring", damping: 30, stiffness: 320 }}
-            className="relative w-full sm:max-w-lg mx-auto flex flex-col overflow-hidden z-10"
+            className="relative w-full sm:max-w-lg mx-auto flex flex-col overflow-hidden z-10 rounded-t-[24px] sm:rounded-[24px]"
             style={{
               background: "var(--bg-card)",
               border: "1px solid var(--border-gold)",
               boxShadow:
                 "0 32px 80px -8px rgba(28,18,12,0.55), 0 0 0 1px rgba(201,151,58,0.12)",
-              borderRadius: "24px 24px 0 0",
               maxHeight: "92vh",
-            }}
-            // Override border-radius for centered (sm+) display
-            ref={(el) => {
-              if (!el) return;
-              const updateRadius = () => {
-                if (window.innerWidth >= 640) {
-                  el.style.borderRadius = "24px";
-                } else {
-                  el.style.borderRadius = "24px 24px 0 0";
-                }
-              };
-              updateRadius();
-              window.addEventListener("resize", updateRadius);
             }}
             onClick={(e) => e.stopPropagation()}
           >

@@ -90,7 +90,7 @@ export default function Menu({ onLoadingChange }: Props) {
         // Wait for minimum duration for "brand experience" on first load only
         await new Promise(resolve => setTimeout(resolve, MIN_LOADING_DURATION));
         if (!isMounted.current) return;
-        
+
         onLoadingChange?.(false);
         setPhase("skeleton");
 
@@ -109,9 +109,14 @@ export default function Menu({ onLoadingChange }: Props) {
   }, [contextLoading, menuData, hasLoaded]);
 
   const categories = useMemo(() => menuData?.categories || [], [menuData]);
+  const items = useMemo(() => menuData?.items || [], [menuData]);
   const availableCategories = useMemo(() =>
-    categories.filter(cat => cat.available && cat.visible !== false),
-    [categories]);
+    categories.filter(cat => {
+      const isAvailable = cat.available && cat.visible !== false;
+      if (!isAvailable) return false;
+      return items.some(item => item.categoryId === cat.id && item.visible !== false);
+    }),
+    [categories, items]);
 
   if (phase === "loading") return null;
 
@@ -128,9 +133,9 @@ export default function Menu({ onLoadingChange }: Props) {
       initial={wasAlreadyLoaded ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-5xl mx-auto pb-20 px-4"
+      className="max-w-5xl mx-auto pb-20 px-1"
     >
-      <div className="flex flex-col gap-6 sm:gap-10">
+      <div className="flex flex-col gap-4 sm:gap-6">
         {availableCategories.map((cat, index) => (
           <CategoryCard key={cat.id} category={cat} index={index} />
         ))}

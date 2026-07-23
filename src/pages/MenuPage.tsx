@@ -155,7 +155,7 @@ export default function MenuPage() {
 
             {/* Logo Container */}
             <div
-              className="relative w-28 h-28 md:w-36 md:h-36 rounded-full p-[3px] shadow-2xl transition-transform duration-500 hover:scale-105 animate-logo-float"
+              className="relative w-40 h-40 md:w-56 md:h-56 rounded-full p-[3px] shadow-2xl transition-transform duration-500 hover:scale-105 animate-logo-float"
               style={{
                 background: "linear-gradient(135deg, #E8BE5C 0%, #C9973A 50%, #7A1733 100%)",
                 boxShadow: "var(--shadow-premium), 0 0 0 1px rgba(255,255,255,0.4)",
@@ -166,7 +166,7 @@ export default function MenuPage() {
               >
                 <img
                   src="/logo.png"
-                  className="w-[88%] h-[88%] object-contain"
+                  className="w-[95%] h-[95%] object-contain"
                   alt="CakeBoss Logo"
                   onError={(e) => { e.currentTarget.src = '/hamada.png' }}
                 />

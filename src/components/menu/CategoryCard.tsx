@@ -22,22 +22,11 @@ export default function CategoryCard({ category, index }: Props) {
     >
       <button
         onClick={() => navigate(`/category/${category.id}`)}
-        className="w-full group relative flex flex-col sm:flex-row items-stretch overflow-hidden outline-none rounded-3xl transition-all duration-500 focus-visible:ring-2 focus-visible:ring-offset-2"
+        className="w-full group relative flex flex-col sm:flex-row items-stretch overflow-hidden outline-none rounded-3xl transition-all duration-500 focus-visible:ring-2 focus-visible:ring-offset-2 hover:border-[rgba(122,23,51,0.3)] hover:shadow-[0_16px_56px_-12px_rgba(122,23,51,0.18),0_6px_24px_-4px_rgba(201,151,58,0.14)] hover:-translate-y-1"
         style={{
           background: "var(--bg-card)",
           border: "1px solid var(--border-color)",
           boxShadow: "var(--shadow-card)",
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(122,23,51,0.3)";
-          (e.currentTarget as HTMLButtonElement).style.boxShadow =
-            "0 16px 56px -12px rgba(122,23,51,0.18), 0 6px 24px -4px rgba(201,151,58,0.14)";
-          (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-5px)";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-color)";
-          (e.currentTarget as HTMLButtonElement).style.boxShadow = "var(--shadow-card)";
-          (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
         }}
       >
         {/* Burgundy top border on hover */}
@@ -80,17 +69,9 @@ export default function CategoryCard({ category, index }: Props) {
 
           {/* Dark overlay on hover */}
           <div
-            className="absolute inset-0 transition-opacity duration-400"
+            className="absolute inset-0 transition-opacity duration-400 opacity-0 group-hover:opacity-100"
             style={{
               background: "linear-gradient(to bottom, transparent 30%, rgba(44,32,24,0.4) 100%)",
-              opacity: 0,
-            }}
-            ref={(el) => {
-              if (!el) return;
-              const btn = el.closest("button");
-              if (!btn) return;
-              btn.addEventListener("mouseenter", () => (el.style.opacity = "1"));
-              btn.addEventListener("mouseleave", () => (el.style.opacity = "0"));
             }}
           />
 
@@ -105,7 +86,7 @@ export default function CategoryCard({ category, index }: Props) {
         </div>
 
         {/* ─── Content Section ─── */}
-        <div className="relative flex-1 flex flex-col justify-center gap-4 p-6 sm:p-8 text-right">
+        <div className="relative flex-1 flex flex-col justify-center gap-4 py-6 px-4 sm:py-8 sm:px-6 text-right">
           {/* Background pattern */}
           <div
             className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -126,38 +107,15 @@ export default function CategoryCard({ category, index }: Props) {
           {/* Dual-accent line: gold + burgundy */}
           <div className="flex items-center gap-0 h-0.5 self-start">
             <div
-              className="h-full rounded-full transition-all duration-500"
+              className="h-full rounded-full transition-all duration-500 w-8 group-hover:w-[60px]"
               style={{
-                width: "32px",
                 background: "var(--gradient-gold)",
-              }}
-              ref={(el) => {
-                if (!el) return;
-                const btn = el.closest("button");
-                if (!btn) return;
-                btn.addEventListener("mouseenter", () => (el.style.width = "60px"));
-                btn.addEventListener("mouseleave", () => (el.style.width = "32px"));
               }}
             />
             <div
-              className="h-full rounded-full ms-1 transition-all duration-700"
+              className="h-full rounded-full ms-1 transition-all duration-700 w-5 opacity-70 group-hover:w-[28px] group-hover:opacity-100"
               style={{
-                width: "20px",
                 background: "var(--gradient-burgundy)",
-                opacity: 0.7,
-              }}
-              ref={(el) => {
-                if (!el) return;
-                const btn = el.closest("button");
-                if (!btn) return;
-                btn.addEventListener("mouseenter", () => {
-                  el.style.width = "28px";
-                  el.style.opacity = "1";
-                });
-                btn.addEventListener("mouseleave", () => {
-                  el.style.width = "20px";
-                  el.style.opacity = "0.7";
-                });
               }}
             />
           </div>
@@ -165,25 +123,9 @@ export default function CategoryCard({ category, index }: Props) {
           {/* Browse CTA — switches to burgundy on hover */}
           <div className="mt-2">
             <div
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-400 group-hover:gap-3"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full font-bold text-sm text-white transition-all duration-400 group-hover:gap-3 bg-gradient-to-br from-gold-500 to-gold-700 group-hover:from-burgundy-400 group-hover:to-burgundy-500 shadow-[0_4px_16px_rgba(201,151,58,0.35)] group-hover:shadow-[0_4px_20px_rgba(122,23,51,0.45)]"
               style={{
-                background: "linear-gradient(135deg, #C9973A 0%, #9A6D18 100%)",
-                color: "#FFFFFF",
-                boxShadow: "0 4px 16px rgba(201,151,58,0.35)",
                 letterSpacing: "0.06em",
-              }}
-              ref={(el) => {
-                if (!el) return;
-                const btn = el.closest("button");
-                if (!btn) return;
-                btn.addEventListener("mouseenter", () => {
-                  el.style.background = "linear-gradient(135deg, #C03060 0%, #7A1733 100%)";
-                  el.style.boxShadow = "0 4px 20px rgba(122,23,51,0.45)";
-                });
-                btn.addEventListener("mouseleave", () => {
-                  el.style.background = "linear-gradient(135deg, #C9973A 0%, #9A6D18 100%)";
-                  el.style.boxShadow = "0 4px 16px rgba(201,151,58,0.35)";
-                });
               }}
             >
               <span>{t("common.browse_menu")}</span>

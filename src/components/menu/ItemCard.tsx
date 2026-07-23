@@ -8,9 +8,10 @@ interface Props {
   item: Item;
   index: number;
   categoryName?: string;
+  className?: string;
 }
 
-export default function ItemCard({ item, index, categoryName }: Props) {
+export default function ItemCard({ item, index, categoryName, className }: Props) {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const itemName = item.nameAr || item.name || "";
   const itemIngredients = item.ingredientsAr || item.ingredients || "";
@@ -29,7 +30,7 @@ export default function ItemCard({ item, index, categoryName }: Props) {
           duration: 0.55,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className={`relative group flex flex-col overflow-hidden rounded-2xl mb-20 transition-all duration-500 ${
+        className={`relative group flex flex-col overflow-hidden rounded-2xl ${className ?? "mb-20"} transition-all duration-500 ${
           unavailable ? "opacity-60 grayscale-[0.7]" : "cursor-pointer"
         }`}
         style={{

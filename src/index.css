@@ -1,0 +1,1161 @@
+@import "tailwindcss";
+
+/* 
+   CAKE BOSS Premium Luxury Bakery Design System
+   Brand Colors extracted from the golden circular logo
+*/
+@theme {
+  /*Gold Brand Colors (Logo Primary) */
+  --color-gold-50: #FDF9F0;
+  --color-gold-100: #FAF0D7;
+  --color-gold-200: #F3D99A;
+  --color-gold-300: #E8BE5C;
+  --color-gold-400: #D4A827;
+  --color-gold-500: #C9973A;
+  --color-gold-600: #B5821F;
+  --color-gold-700: #9A6D18;
+  --color-gold-800: #7A5312;
+  --color-gold-900: #5A3D0D;
+
+  /* â”€â”€ Burgundy Accent (Premium Highlight) â”€â”€ */
+  --color-burgundy-50: #FDF2F5;
+  --color-burgundy-100: #FAE0E7;
+  --color-burgundy-200: #F3B8C8;
+  --color-burgundy-300: #E07090;
+  --color-burgundy-400: #C03060;
+  --color-burgundy-500: #7A1733;
+  --color-burgundy-600: #6A1229;
+  --color-burgundy-700: #560E21;
+  --color-burgundy-800: #420A19;
+  --color-burgundy-900: #2E0712;
+
+  /* â”€â”€ Cream / Warm White (Background) â”€â”€ */
+  --color-cream-50: #FFFFFF;
+  --color-cream-100: #FDFBF8;
+  --color-cream-200: #FAF6EF;
+  --color-cream-300: #F5EEE2;
+  --color-cream-400: #EDE4D2;
+  --color-cream-500: #E2D5BC;
+  --color-cream-600: #CEC0A0;
+  --color-cream-700: #B5A07C;
+  --color-cream-800: #967D58;
+  --color-cream-900: #72583A;
+
+  /* â”€â”€ Warm Charcoal (Text) â”€â”€ */
+  --color-charcoal-50: #F8F6F4;
+  --color-charcoal-100: #EDE9E4;
+  --color-charcoal-200: #D3CBC2;
+  --color-charcoal-300: #B5A99C;
+  --color-charcoal-400: #8F7E70;
+  --color-charcoal-500: #6B5A4E;
+  --color-charcoal-600: #504035;
+  --color-charcoal-700: #3A2D24;
+  --color-charcoal-800: #2C2018;
+  --color-charcoal-900: #1E1510;
+
+  /* Semantic Color Aliases */
+  --color-primary: #C9973A;
+  --color-primary-light: #E8BE5C;
+  --color-primary-dark: #9A6D18;
+  --color-primary-hover: #B5821F;
+
+  --color-accent: #7A1733;
+  --color-accent-light: #C03060;
+  --color-accent-dark: #560E21;
+
+  --color-success: #2D7A4F;
+  --color-warning: #D4A827;
+  --color-error: #C0392B;
+
+  /*  Premium Shadows */
+  --shadow-soft: 0 2px 16px -4px rgba(201, 151, 58, 0.12);
+  --shadow-card: 0 4px 24px -6px rgba(201, 151, 58, 0.18);
+  --shadow-premium: 0 8px 40px -12px rgba(201, 151, 58, 0.28);
+  --shadow-premium-hover: 0 16px 56px -16px rgba(201, 151, 58, 0.38);
+  --shadow-gold: 0 4px 20px -4px rgba(201, 151, 58, 0.35);
+  --shadow-burgundy: 0 4px 20px -4px rgba(122, 23, 51, 0.30);
+  --shadow-burgundy-strong: 0 8px 32px -4px rgba(122, 23, 51, 0.45);
+  --shadow-burgundy-glow: 0 0 0 0 rgba(122, 23, 51, 0);
+
+  /*  FAB (Floating Action Button)  */
+  --fab-size: 56px;
+  --fab-size-lg: 60px;
+  --fab-bg: linear-gradient(135deg, #C03060 0%, #7A1733 100%);
+  --fab-shadow: 0 8px 32px -4px rgba(122, 23, 51, 0.55), 0 2px 8px rgba(122, 23, 51, 0.3);
+  --fab-shadow-hover: 0 16px 48px -4px rgba(122, 23, 51, 0.65), 0 4px 12px rgba(122, 23, 51, 0.35);
+}
+
+/* 
+   CSS Variables Light Cream Theme
+ */
+:root {
+  /* Backgrounds */
+  --bg-main: #FDFBF8;
+  --bg-page: #FAF6EF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FDF9F0;
+  --bg-surface: #F5EEE2;
+  --bg-muted: #EDE4D2;
+
+  /* Text */
+  --text-main: #2C2018;
+  --text-secondary: #6B5A4E;
+  --text-muted: #B5A99C;
+  --text-gold: #C9973A;
+  --text-burgundy: #7A1733;
+
+  /* Borders */
+  --border-color: #E2D5BC;
+  --border-gold: rgba(201, 151, 58, 0.35);
+  --border-gold-heavy: rgba(201, 151, 58, 0.60);
+  --border-burgundy: rgba(122, 23, 51, 0.25);
+
+  /* Gradients */
+  --gradient-gold: linear-gradient(135deg, #E8BE5C 0%, #C9973A 50%, #9A6D18 100%);
+  --gradient-gold-soft: linear-gradient(135deg, #FAF0D7 0%, #F3D99A 100%);
+  --gradient-burgundy: linear-gradient(135deg, #C03060 0%, #7A1733 100%);
+  --gradient-bg: linear-gradient(160deg, #FDFBF8 0%, #FAF6EF 40%, #F5EEE2 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(253, 249, 240, 0) 0%, rgba(250, 246, 239, 0.6) 50%, #FAF6EF 100%);
+}
+
+/* ── Admin Dashboard Burgundy Theme Override ── */
+.admin-theme {
+  /* Swap primary to point to the burgundy accent brand colors */
+  --color-primary: #7A1733;
+  --color-primary-light: #C03060;
+  --color-primary-dark: #560E21;
+  --color-primary-hover: #6A1229;
+
+  /* Swap secondary to point to the gold colors */
+  --color-secondary: #C9973A;
+  --color-secondary-light: #E8BE5C;
+  --color-secondary-dark: #9A6D18;
+  --color-secondary-hover: #B5821F;
+
+  /* Override specific semantic borders to burgundy shades */
+  --border-gold: rgba(122, 23, 51, 0.28);
+  --border-gold-heavy: rgba(122, 23, 51, 0.55);
+
+  /* Update gradients in admin to burgundy */
+  --gradient-gold: linear-gradient(135deg, #C03060 0%, #7A1733 50%, #560E21 100%);
+  --gradient-gold-soft: linear-gradient(135deg, #FDF2F5 0%, #F3B8C8 100%);
+
+  /* Swap text-gold to burgundy */
+  --text-gold: #7A1733;
+
+  /* Refined success, warning, error colors for burgundy palette harmony */
+  --color-success: #276F44;
+  /* Premium forest emerald */
+  --color-warning: #D9822B;
+  /* Darker warm amber */
+  --color-error: #9C2A2A;
+  /* Deep crimson */
+
+  /* Override premium shadows to use burgundy glow instead of gold glow */
+  --shadow-soft: 0 2px 16px -4px rgba(122, 23, 51, 0.12);
+  --shadow-card: 0 4px 24px -6px rgba(122, 23, 51, 0.18);
+  --shadow-premium: 0 8px 40px -12px rgba(122, 23, 51, 0.28);
+  --shadow-premium-hover: 0 16px 56px -16px rgba(122, 23, 51, 0.38);
+  --shadow-gold: 0 4px 20px -4px rgba(122, 23, 51, 0.35);
+  --shadow-burgundy: 0 4px 20px -4px rgba(201, 151, 58, 0.30);
+}
+
+
+/* 
+   Swiper Customization â€” Gold Theme
+ */
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+.swiper-pagination-bullet {
+  background-color: var(--color-primary);
+  opacity: 0.4;
+  width: 6px;
+  height: 6px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-primary);
+  opacity: 1;
+  width: 18px;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  box-shadow: var(--shadow-gold);
+  border: 1px solid var(--border-gold);
+}
+
+/*  Font Faces Cairo (Primary Arabic Font) */
+@font-face {
+  font-family: 'Playpen Sans Arabic';
+  src: url('/fonts/PlaypenSansArabic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lemonada';
+  src: url('/fonts/Lemonada.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BalooBhaijaan2-Bold';
+  src: url('/fonts/BalooBhaijaan2-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Thin.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-ExtraLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Light.ttf') format('truetype');
+  font-weight: 350;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('/fonts/Almarai-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('/fonts/Almarai-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('/fonts/Almarai-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Almarai';
+  src: url('/fonts/Almarai-ExtraBold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/*  Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: 'Cairo', 'Almarai', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.7;
+}
+
+/*  Page Background Gradient */
+.bg-page-pattern {
+  background-color: var(--bg-page);
+  background-image:
+    radial-gradient(ellipse at 15% 10%, rgba(201, 151, 58, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 90%, rgba(122, 23, 51, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(201, 151, 58, 0.03) 0%, transparent 70%);
+}
+
+/*  Gold Ornamental Divider */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 151, 58, 0.4), transparent);
+}
+
+.gold-divider-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(201, 151, 58, 0.5);
+}
+
+/*  Gold Text Gradient */
+.text-gold-gradient {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-burgundy-gradient {
+  background: var(--gradient-burgundy);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*  Premium Card Base */
+.card-premium {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-premium:hover {
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow-premium-hover);
+  transform: translateY(-4px);
+}
+
+/* Gold accent top border on hover */
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: 20px 20px 0 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card-premium:hover::before {
+  opacity: 1;
+}
+
+/*  Button System */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--gradient-gold);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-gold);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.3s ease;
+  border-radius: inherit;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-premium);
+}
+
+.btn-primary:hover::after {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Burgundy Accent Button */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--gradient-burgundy);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-burgundy);
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(122, 23, 51, 0.4);
+}
+
+.btn-accent:active {
+  transform: scale(0.97);
+}
+
+/* Outline Button */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  border: 1.5px solid var(--border-gold-heavy);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(201, 151, 58, 0.08);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* Ghost Button */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border-color: var(--border-gold);
+}
+
+/*  Badge / Pill */
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, rgba(232, 190, 92, 0.25), rgba(201, 151, 58, 0.15));
+  border: 1px solid var(--border-gold);
+  border-radius: 50px;
+  color: var(--color-primary-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-burgundy {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, rgba(192, 48, 96, 0.2), rgba(122, 23, 51, 0.12));
+  border: 1px solid var(--border-burgundy);
+  border-radius: 50px;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/*  Skeleton Shimmer â€” Warm Cream */
+.skeleton-line {
+  background: linear-gradient(90deg,
+      var(--bg-surface) 25%,
+      var(--bg-muted) 50%,
+      var(--bg-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/*  Keyframe Animations */
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pulseScale {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.animate-pulseScale {
+  animation: pulseScale 2.5s ease-in-out infinite;
+}
+
+@keyframes goldGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 16px rgba(201, 151, 58, 0.35);
+  }
+
+  50% {
+    box-shadow: 0 0 32px rgba(201, 151, 58, 0.65);
+  }
+}
+
+.animate-gold-glow {
+  animation: goldGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-textGradient {
+  background-size: 200% 200%;
+  animation: textGradient 3s ease infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes floatSlow {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-floatSlow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes haloPulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes bgPulse {
+
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes dot {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes loaderFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-loader-fade {
+  animation: loaderFade 0.4s ease-out both;
+}
+
+.animate-logo-float {
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+.animate-halo {
+  animation: haloPulse 3s ease-in-out infinite;
+}
+
+.animate-bg-pulse {
+  animation: bgPulse 4s ease-in-out infinite;
+}
+
+.animate-dot-1 {
+  animation: dot 1.4s infinite;
+}
+
+.animate-dot-2 {
+  animation: dot 1.4s infinite 0.2s;
+}
+
+.animate-dot-3 {
+  animation: dot 1.4s infinite 0.4s;
+}
+
+@keyframes itemEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes imagePop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toastShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -70px) scale(1);
+  }
+}
+
+.animate-item-enter {
+  animation: itemEnter 0.45s ease-out both;
+}
+
+.animate-image-pop {
+  animation: imagePop 0.4s ease-out both;
+}
+
+.animate-toast-show {
+  animation: toastShow 0.3s ease-out both;
+}
+
+/*  Gold Decorative Line */
+.gold-line {
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+  box-shadow: 0 1px 8px rgba(201, 151, 58, 0.4);
+}
+
+.burgundy-line {
+  height: 2px;
+  background: var(--gradient-burgundy);
+  border-radius: 2px;
+  box-shadow: 0 1px 8px rgba(122, 23, 51, 0.3);
+}
+
+/*  Input Focus  Ring */
+.input-gold {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.input-gold::placeholder {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.input-gold:focus {
+  border-color: var(--border-gold-heavy);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(201, 151, 58, 0.12);
+}
+
+/*  Scrollbar Minimal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-300);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}
+
+/* Selection */
+::selection {
+  background: rgba(201, 151, 58, 0.2);
+  color: var(--text-main);
+}
+
+/*  Utility Classes */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-premium);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 151, 58, 0.2);
+}
+
+.bg-main {
+  background-color: var(--bg-page);
+}
+
+.bg-card-custom {
+  background-color: var(--bg-card);
+}
+
+/* Star badge for featured items */
+.star-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 26px;
+  height: 26px;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-gold);
+  z-index: 10;
+}
+
+/* Price tag style */
+.price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, rgba(201, 151, 58, 0.12), rgba(201, 151, 58, 0.06));
+  border: 1px solid var(--border-gold);
+  border-radius: 50px;
+  color: var(--color-primary-dark);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+/* Unavailable overlay */
+.unavailable-badge {
+  background: linear-gradient(135deg, rgba(122, 23, 51, 0.9), rgba(86, 14, 33, 0.9));
+  color: white;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+/* ---------------------------------------------------
+   Floating Action Button — Burgundy Premium FAB
+--------------------------------------------------- */
+@keyframes fabPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) translateY(20px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-4px);
+  }
+
+  80% {
+    transform: scale(0.95) translateY(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes burgundyPulse {
+  0% {
+    box-shadow: 0 8px 32px -4px rgba(122, 23, 51, 0.55), 0 0 0 0 rgba(122, 23, 51, 0.4);
+  }
+
+  60% {
+    box-shadow: 0 8px 32px -4px rgba(122, 23, 51, 0.55), 0 0 0 12px rgba(122, 23, 51, 0);
+  }
+
+  100% {
+    box-shadow: 0 8px 32px -4px rgba(122, 23, 51, 0.55), 0 0 0 0 rgba(122, 23, 51, 0);
+  }
+}
+
+.fab-feedback {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C03060 0%, #7A1733 100%);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px -4px rgba(122, 23, 51, 0.55), 0 2px 8px rgba(122, 23, 51, 0.3);
+  animation: fabPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both, burgundyPulse 2.8s ease-out 1.2s infinite;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  outline: none;
+}
+
+.fab-feedback:hover {
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 0 16px 48px -4px rgba(122, 23, 51, 0.65), 0 4px 12px rgba(122, 23, 51, 0.35);
+  animation: none;
+}
+
+.fab-feedback:active {
+  transform: scale(0.91);
+  box-shadow: 0 4px 16px rgba(122, 23, 51, 0.4);
+  animation: none;
+}
+
+.fab-featured {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 40;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C03060 0%, #7A1733 100%);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px -4px rgba(122, 23, 51, 0.55), 0 2px 8px rgba(122, 23, 51, 0.3);
+  animation: fabPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both, burgundyPulse 2.8s ease-out 1.2s infinite;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  outline: none;
+}
+
+.fab-featured:hover {
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 0 16px 48px -4px rgba(122, 23, 51, 0.65), 0 4px 12px rgba(122, 23, 51, 0.35);
+  animation: none;
+}
+
+.fab-featured:active {
+  transform: scale(0.91);
+  box-shadow: 0 4px 16px rgba(122, 23, 51, 0.4);
+  animation: none;
+}
+
+/* Feedback Modal Close Button */
+.feedback-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.feedback-close-btn:hover {
+  background: rgba(122, 23, 51, 0.08);
+  color: var(--color-accent);
+  border-color: rgba(122, 23, 51, 0.3);
+}
+
+/* ---------------------------------------------------
+   Premium Social Buttons — Burgundy Circular Style
+--------------------------------------------------- */
+.social-btn-premium {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C03060 0%, #7A1733 100%);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(122, 23, 51, 0.35);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.social-btn-premium::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.25s ease;
+  border-radius: inherit;
+}
+
+.social-btn-premium:hover {
+  transform: translateY(-5px) scale(1.12);
+  box-shadow: 0 14px 36px rgba(122, 23, 51, 0.5), 0 0 0 4px rgba(192, 48, 96, 0.2);
+}
+
+.social-btn-premium:hover::after {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.social-btn-premium:active {
+  transform: scale(0.88);
+  box-shadow: 0 4px 12px rgba(122, 23, 51, 0.35);
+}
+
+/* ---------------------------------------------------
+   Star Badge — Burgundy Variant
+--------------------------------------------------- */
+.star-badge-burgundy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #C03060, #7A1733);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(122, 23, 51, 0.45);
+  z-index: 10;
+}

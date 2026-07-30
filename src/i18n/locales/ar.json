@@ -135,7 +135,13 @@
     "menu": {
         "title": "قائمتنا",
         "subtitle": "صناع الجودة",
-        "categories": "الأقسام"
+        "categories": "الأقسام",
+        "chef_recommendations": "اقتراحات الشيف",
+        "featured": "مميز",
+        "featured_items": "مميزة الأصناف",
+        "all_categories": "جميع الأقسام",
+        "view_category": "عرض القسم",
+        "details": "تفاصيل الصنف"
     },
     "admin": {
         "dashboard": "لوحة التحكم",
@@ -215,7 +221,7 @@
         "upload_failed": "فشل رفع الصورة، حاول مرة أخرى",
         "uploading": "جاري الرفع...",
         "upload_btn": "رفع الصورة",
-        "item_name_ar_placeholder": "مثل: تشيكن لمة",
+        "item_name_ar_placeholder": "مثل: كريب نوتيلا",
         "item_price_placeholder": "مثل: 50, 40 (افصل بفاصلة لعدة أحجام)",
         "item_added_success_title": "تم إضافة الصنف بنجاح",
         "item_added_success_desc": "تم تحديث القائمة بنجاح",

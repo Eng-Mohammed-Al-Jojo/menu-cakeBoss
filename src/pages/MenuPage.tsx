@@ -6,18 +6,23 @@ import LoadingScreen from "../components/common/LoadingScreen";
 import { motion, AnimatePresence } from "framer-motion";
 import FeedbackModal from "../components/menu/FeedbackModal";
 import FeaturedModal from "../components/menu/FeaturedModal";
+import ItemDetailModal from "../components/menu/ItemDetailModal";
 import { Flame, MessageCircle } from "lucide-react";
 import { useMenu } from "../context/MenuContext";
+import type { Item } from "../components/menu/Menu";
 
 export default function MenuPage() {
   const { t } = useTranslation();
-  const { complaintsWhatsapp, hasFeaturedItems, hasLoaded } = useMenu();
+  const { complaintsWhatsapp, hasFeaturedItems, hasLoaded, featuredItems, orderSystem } = useMenu();
 
   const initiallyLoaded = useRef(hasLoaded);
   const [isLoading, setIsLoading] = useState(!initiallyLoaded.current);
 
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [showFeatured, setShowFeatured] = useState(false);
+
+  // ItemDetailModal state (opened from FeaturedModal)
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
   useEffect(() => {
     if (!initiallyLoaded.current) {
@@ -27,6 +32,10 @@ export default function MenuPage() {
 
   const handleLoadingChange = (loading: boolean) => {
     setIsLoading(loading);
+  };
+
+  const handleFeaturedItemDetails = (item: Item) => {
+    setSelectedItem(item);
   };
 
   return (
@@ -249,7 +258,24 @@ export default function MenuPage() {
         </div>
       </main>
 
-      <FeaturedModal show={showFeatured} onClose={() => setShowFeatured(false)} />
+      {/* ═══════ FEATURED MODAL ═══════ */}
+      <FeaturedModal
+        isOpen={showFeatured}
+        onClose={() => setShowFeatured(false)}
+        items={featuredItems}
+        orderSystem={orderSystem}
+        onDetailsClick={handleFeaturedItemDetails}
+      />
+
+      {/* ═══════ ITEM DETAIL MODAL (opened from Featured) ═══════ */}
+      {selectedItem && (
+        <ItemDetailModal
+          isOpen={!!selectedItem}
+          onClose={() => setSelectedItem(null)}
+          item={selectedItem}
+          orderSystem={orderSystem}
+        />
+      )}
 
       {complaintsWhatsapp !== "" && (
         <FeedbackModal

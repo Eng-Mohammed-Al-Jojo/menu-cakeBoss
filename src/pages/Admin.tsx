@@ -393,7 +393,7 @@ export default function Admin() {
               initial={{ opacity: 0, y: 30, x: '-50%' }}
               animate={{ opacity: 1, y: 0, x: '-50%' }}
               exit={{ opacity: 0, y: 30, x: '-50%' }}
-              className={`fixed bottom-10 left-1/2 z-100 px-8 py-4 rounded-2xl shadow-2xl text-white font-black text-sm border-t-4 border-white/20 ${toast.type === 'success' ? 'bg-secondary' : 'bg-red-500'}`}
+              className={`fixed bottom-10 left-1/2 z-100 px-8 py-4 rounded-2xl shadow-2xl text-black font-black text-sm border-t-4 border-white/20 ${toast.type === 'success' ? 'bg-secondary' : 'bg-red-500'}`}
             >
               {toast.message}
             </motion.div>
@@ -562,7 +562,7 @@ export default function Admin() {
               initial={{ opacity: 0, y: 30, x: '-50%' }}
               animate={{ opacity: 1, y: 0, x: '-50%' }}
               exit={{ opacity: 0, y: 30, x: '-50%' }}
-              className={`fixed bottom-10 left-1/2 z-100 px-8 py-4 rounded-2xl shadow-2xl text-white font-black text-sm border-t-4 border-white/20 ${toast.type === 'success' ? 'bg-secondary' : 'bg-red-500'}`}
+              className={`fixed bottom-10 left-1/2 z-100 px-8 py-4 rounded-2xl shadow-2xl text-black font-black text-sm border-t-4 border-white/20 ${toast.type === 'success' ? 'bg-secondary' : 'bg-red-500'}`}
             >
               {toast.message}
             </motion.div>

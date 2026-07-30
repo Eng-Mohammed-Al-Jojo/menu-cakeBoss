@@ -1,828 +1,402 @@
-import { useMemo, useEffect, useRef, useCallback, useState } from "react";
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiX, FiStar, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiX, FiInfo } from "react-icons/fi";
+import { HiStar } from "react-icons/hi";
 import { useTranslation } from "react-i18next";
-import { useMenu } from "../../context/MenuContext";
-import { type Item } from "./Menu";
-import ItemDetailModal from "./ItemDetailModal";
+import type { Item } from "./Menu";
 
 interface Props {
-  show: boolean;
+  isOpen: boolean;
   onClose: () => void;
+  items: Item[];
+  orderSystem: boolean;
+  onItemClick?: (item: Item) => void;
+  onDetailsClick?: (item: Item) => void;
 }
 
-/* ─── Size labels ─── */
-const SIZE_LABELS_AR = ["صغير", "وسط", "كبير", "عائلي"];
-const SIZE_LABELS_EN = ["S", "M", "L", "XL"];
+export default function FeaturedModal({
+  isOpen,
+  onClose,
+  items,
+  onDetailsClick,
+}: Props) {
+  const { t } = useTranslation();
 
-/* ─── Individual Premium Card ─── */
-function FeaturedCard({
-  item,
-  index,
-}: {
-  item: Item;
-  index: number;
-}) {
-  const { i18n } = useTranslation();
-  const isRtl = i18n.language === "ar";
-  const [isDetailOpen, setIsDetailOpen] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
-
-  const itemName = isRtl
-    ? item.nameAr || item.name || ""
-    : item.name || item.nameAr || "";
-  const ingredients = isRtl
-    ? item.ingredientsAr || item.ingredients || ""
-    : item.ingredients || item.ingredientsAr || "";
-  const rawPrices = String(item.price ?? "")
-    .split(",")
-    .map((p) => p.trim())
-    .filter(Boolean);
-  const imageSrc = item.image ? `/images/${item.image}` : "/logo.png";
-  const unavailable = item.visible === false;
-  const sizeLabels = isRtl ? SIZE_LABELS_AR : SIZE_LABELS_EN;
-
-  return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 24, scale: 0.94 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{
-          delay: index * 0.07,
-          duration: 0.55,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        className={`group relative flex flex-col overflow-hidden rounded-3xl select-none ${
-          unavailable ? "opacity-60 grayscale-[0.6]" : "cursor-pointer"
-        }`}
-        style={{
-          background: "var(--bg-card)",
-          border: "1px solid var(--border-color)",
-          boxShadow:
-            "0 4px 28px -6px rgba(28,18,12,0.12), 0 2px 8px -2px rgba(201,151,58,0.08)",
-          transition: "transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.35s ease",
-        }}
-        onClick={() => {
-          if (!unavailable) setIsDetailOpen(true);
-        }}
-        onMouseEnter={(e) => {
-          if (unavailable) return;
-          const el = e.currentTarget as HTMLDivElement;
-          el.style.transform = "translateY(-7px) scale(1.012)";
-          el.style.boxShadow =
-            "0 20px 56px -10px rgba(28,18,12,0.22), 0 8px 24px -4px rgba(122,23,51,0.14), 0 0 0 1px rgba(201,151,58,0.22)";
-          el.style.borderColor = "rgba(201,151,58,0.4)";
-        }}
-        onMouseLeave={(e) => {
-          const el = e.currentTarget as HTMLDivElement;
-          el.style.transform = "translateY(0) scale(1)";
-          el.style.boxShadow =
-            "0 4px 28px -6px rgba(28,18,12,0.12), 0 2px 8px -2px rgba(201,151,58,0.08)";
-          el.style.borderColor = "var(--border-color)";
-        }}
-      >
-        {/* ── Dual-tone top reveal border ── */}
-        <div
-          className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(201,151,58,0.6) 25%, rgba(232,190,92,0.9) 42%, rgba(192,48,96,0.7) 50%, rgba(232,190,92,0.9) 58%, rgba(201,151,58,0.6) 75%, transparent 100%)",
-          }}
-        />
-
-        {/* ── Featured Star badge ── */}
-        <div
-          className="absolute top-3 right-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full"
-          style={{
-            background: "linear-gradient(135deg, rgba(192,48,96,0.92), rgba(122,23,51,0.92))",
-            backdropFilter: "blur(8px)",
-            boxShadow: "0 2px 12px rgba(122,23,51,0.45)",
-          }}
-        >
-          <FiStar size={10} fill="white" stroke="white" />
-          <span className="text-white font-black text-[10px] tracking-wider uppercase">
-            {isRtl ? "مميز" : "Featured"}
-          </span>
-        </div>
-
-        {/* ── Image Area ── */}
-        <div
-          className="relative overflow-hidden"
-          style={{ aspectRatio: "4 / 3", background: "var(--bg-surface)" }}
-        >
-          {/* Shimmer placeholder */}
-          {!imgLoaded && (
-            <div className="absolute inset-0 skeleton-line" />
-          )}
-
-          <img
-            src={imageSrc}
-            alt={itemName}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
-            style={{ opacity: imgLoaded ? 1 : 0, transition: "opacity 0.4s ease, transform 0.7s ease" }}
-            onLoad={() => setImgLoaded(true)}
-            onError={(e) => {
-              const el = e.target as HTMLImageElement;
-              el.src = "/logo.png";
-              el.className =
-                "w-2/5 h-2/5 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15";
-              setImgLoaded(true);
-            }}
-          />
-
-          {/* Hover burgundy shimmer */}
-          <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(135deg, transparent 40%, rgba(122,23,51,0.07) 70%, transparent 100%)",
-            }}
-          />
-
-          {/* Bottom gradient fade into card */}
-          <div
-            className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(to bottom, transparent 0%, rgba(253,251,248,0.6) 100%)",
-            }}
-          />
-
-          {/* Unavailable overlay */}
-          {unavailable && (
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{ background: "rgba(253,249,240,0.75)", backdropFilter: "blur(3px)" }}
-            >
-              <span className="unavailable-badge text-xs">غير متوفر</span>
-            </div>
-          )}
-        </div>
-
-        {/* ── Content ── */}
-        <div className="flex flex-col gap-3 p-4 flex-1">
-          {/* Name */}
-          <h3
-            className="text-base font-black leading-snug line-clamp-2 text-right"
-            style={{ color: "var(--text-main)" }}
-          >
-            {itemName}
-          </h3>
-
-          {/* Ingredients */}
-          {ingredients && (
-            <p
-              className="text-xs leading-relaxed line-clamp-2 text-right"
-              style={{ color: "var(--text-muted)", fontWeight: 500 }}
-            >
-              {ingredients}
-            </p>
-          )}
-
-          {/* Decorative gold separator */}
-          <div className="flex items-center gap-2 my-0.5">
-            <div
-              className="h-px flex-1 rounded-full"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, rgba(201,151,58,0.3), transparent)",
-              }}
-            />
-            <div
-              className="w-1 h-1 rounded-full"
-              style={{ background: "rgba(201,151,58,0.5)" }}
-            />
-            <div
-              className="h-px flex-1 rounded-full"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, rgba(201,151,58,0.3), transparent)",
-              }}
-            />
-          </div>
-
-          {/* Prices */}
-          <div className="flex flex-col gap-1.5 mt-auto">
-            {rawPrices.length === 1 ? (
-              <div className="flex items-baseline gap-1 justify-end">
-                <span
-                  className="text-2xl font-black"
-                  style={{ color: "var(--color-primary-dark)" }}
-                >
-                  {rawPrices[0]}
-                </span>
-                <span
-                  className="text-base font-bold"
-                  style={{ color: "var(--color-primary)" }}
-                >
-                  ₪
-                </span>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-1">
-                {rawPrices.map((price, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center justify-between px-3 py-1.5 rounded-xl"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(201,151,58,0.06), rgba(201,151,58,0.03))",
-                      border: "1px solid rgba(201,151,58,0.15)",
-                    }}
-                  >
-                    <span
-                      className="text-[11px] font-bold"
-                      style={{ color: "var(--text-secondary)" }}
-                    >
-                      {sizeLabels[idx] || `${idx + 1}`}
-                    </span>
-                    <div className="flex items-baseline gap-0.5">
-                      <span
-                        className="text-sm font-black"
-                        style={{ color: "var(--color-primary-dark)" }}
-                      >
-                        {price}
-                      </span>
-                      <span
-                        className="text-xs font-bold"
-                        style={{ color: "var(--color-primary)" }}
-                      >
-                        ₪
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* View Details CTA */}
-          {!unavailable && (
-            <button
-              className="w-full mt-1 py-2.5 rounded-xl font-black text-xs text-white tracking-wider uppercase transition-all duration-300 group-hover:shadow-[0_6px_20px_rgba(122,23,51,0.4)]"
-              style={{
-                background: "linear-gradient(135deg, #C9973A 0%, #9A6D18 100%)",
-                boxShadow: "0 3px 12px rgba(201,151,58,0.3)",
-                transition: "background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background =
-                  "linear-gradient(135deg, #C03060 0%, #7A1733 100%)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                  "0 6px 20px rgba(122,23,51,0.4)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background =
-                  "linear-gradient(135deg, #C9973A 0%, #9A6D18 100%)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                  "0 3px 12px rgba(201,151,58,0.3)";
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsDetailOpen(true);
-              }}
-            >
-              {i18n.language === "ar" ? "عرض التفاصيل" : "View Details"}
-            </button>
-          )}
-        </div>
-      </motion.div>
-
-      <ItemDetailModal
-        isOpen={isDetailOpen}
-        onClose={() => setIsDetailOpen(false)}
-        item={item}
-        orderSystem={false}
-      />
-    </>
-  );
-}
-
-/* ══════════════════════════════════
-   Main FeaturedModal
-══════════════════════════════════ */
-export default function FeaturedModal({ show, onClose }: Props) {
-  const { t, i18n } = useTranslation();
-  const { menuData } = useMenu();
-  const isRtl = i18n.language === "ar";
-
-  /* ── items from context, no extra DB fetch ── */
-  const items = useMemo(() => {
-    if (!menuData) return [];
-    return menuData.items.filter(
-      (item) => item.star === true && item.visible !== false
-    );
-  }, [menuData]);
-
-  /* ── Carousel state ── */
-  const [activeIndex, setActiveIndex] = useState(0);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const isHoveringRef = useRef(false);
-  const isDraggingRef = useRef(false);
-  const dragStartXRef = useRef(0);
-  const dragStartScrollRef = useRef(0);
-
-  /* ── Slides per view based on viewport ── */
-  const [slidesPerView, setSlidesPerView] = useState(1);
-
+  // Lock body scroll + Escape key
   useEffect(() => {
-    const update = () => {
-      if (window.innerWidth >= 1024) setSlidesPerView(3);
-      else if (window.innerWidth >= 640) setSlidesPerView(2);
-      else setSlidesPerView(1);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  const totalSlides = items.length;
-  const canGoNext = activeIndex < totalSlides - slidesPerView;
-  const canGoPrev = activeIndex > 0;
-
-  /* ── Scroll to slide ── */
-  const scrollToIndex = useCallback(
-    (idx: number) => {
-      const track = trackRef.current;
-      if (!track) return;
-      const clamped = Math.max(0, Math.min(idx, totalSlides - slidesPerView));
-      setActiveIndex(clamped);
-      const slideWidth = track.scrollWidth / totalSlides;
-      track.scrollTo({
-        left: isRtl ? -(clamped * slideWidth) : clamped * slideWidth,
-        behavior: "smooth",
-      });
-    },
-    [totalSlides, slidesPerView, isRtl]
-  );
-
-  const goNext = useCallback(() => {
-    if (canGoNext) scrollToIndex(activeIndex + 1);
-    else scrollToIndex(0); // loop back
-  }, [canGoNext, activeIndex, scrollToIndex]);
-
-  const goPrev = useCallback(() => {
-    if (canGoPrev) scrollToIndex(activeIndex - 1);
-    else scrollToIndex(totalSlides - slidesPerView); // loop to end
-  }, [canGoPrev, activeIndex, scrollToIndex, totalSlides, slidesPerView]);
-
-  /* ── Autoplay ── */
-  const startAutoplay = useCallback(() => {
-    if (autoplayRef.current) clearInterval(autoplayRef.current);
-    autoplayRef.current = setInterval(() => {
-      if (!isHoveringRef.current && !isDraggingRef.current) {
-        setActiveIndex((prev) => {
-          const next = prev < totalSlides - slidesPerView ? prev + 1 : 0;
-          const track = trackRef.current;
-          if (track) {
-            const slideWidth = track.scrollWidth / totalSlides;
-            track.scrollTo({
-              left: isRtl ? -(next * slideWidth) : next * slideWidth,
-              behavior: "smooth",
-            });
-          }
-          return next;
-        });
-      }
-    }, 3500);
-  }, [totalSlides, slidesPerView, isRtl]);
-
-  const stopAutoplay = useCallback(() => {
-    if (autoplayRef.current) clearInterval(autoplayRef.current);
-    autoplayRef.current = null;
-  }, []);
-
-  useEffect(() => {
-    if (show && items.length > slidesPerView) {
-      startAutoplay();
-    }
-    return stopAutoplay;
-  }, [show, items.length, slidesPerView, startAutoplay, stopAutoplay]);
-
-  /* ── Keyboard & body scroll lock ── */
-  useEffect(() => {
-    if (!show) return;
+    if (!isOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") isRtl ? goNext() : goPrev();
-      if (e.key === "ArrowRight") isRtl ? goPrev() : goNext();
-    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", onKey);
-
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
     };
-  }, [show, onClose, goNext, goPrev, isRtl]);
-
-  /* ── Mouse drag on carousel track ── */
-  const onMouseDown = (e: React.MouseEvent) => {
-    isDraggingRef.current = true;
-    dragStartXRef.current = e.clientX;
-    dragStartScrollRef.current = trackRef.current?.scrollLeft ?? 0;
-    stopAutoplay();
-  };
-
-  const onMouseMove = (e: React.MouseEvent) => {
-    if (!isDraggingRef.current || !trackRef.current) return;
-    const dx = e.clientX - dragStartXRef.current;
-    trackRef.current.scrollLeft = dragStartScrollRef.current - dx;
-  };
-
-  const onMouseUp = (e: React.MouseEvent) => {
-    if (!isDraggingRef.current) return;
-    const dx = e.clientX - dragStartXRef.current;
-    isDraggingRef.current = false;
-    if (Math.abs(dx) > 60) {
-      if (dx < 0) goNext();
-      else goPrev();
-    }
-    startAutoplay();
-  };
-
-  /* ── Track scroll sync for indicator ── */
-  const onScroll = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    const slideWidth = track.scrollWidth / totalSlides;
-    if (slideWidth === 0) return;
-    const idx = Math.round(Math.abs(track.scrollLeft) / slideWidth);
-    setActiveIndex(Math.max(0, Math.min(idx, totalSlides - 1)));
-  };
-
-  /* ── Touch events ── */
-  const touchStartXRef = useRef(0);
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchStartXRef.current = e.touches[0].clientX;
-    stopAutoplay();
-  };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    const dx = e.changedTouches[0].clientX - touchStartXRef.current;
-    if (Math.abs(dx) > 50) {
-      if (dx < 0) goNext();
-      else goPrev();
-    }
-    startAutoplay();
-  };
+  }, [isOpen, onClose]);
 
   if (typeof document === "undefined") return null;
 
-  const slideWidthPct = 100 / slidesPerView;
-  const showArrows = totalSlides > slidesPerView;
-  const dotCount = Math.max(0, totalSlides - slidesPerView + 1);
-
   return createPortal(
     <AnimatePresence>
-      {show && (
+      {isOpen && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-5"
-          role="dialog"
-          aria-modal="true"
-          aria-label={isRtl ? "الأصناف المميزة" : "Featured Items"}
-          dir={isRtl ? "rtl" : "ltr"}
+          className="fixed inset-0 flex items-end sm:items-center justify-center"
+          style={{ zIndex: 9000 }}
         >
           {/* ── Backdrop ── */}
           <motion.div
-            key="featured-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            onClick={onClose}
             className="absolute inset-0"
             style={{
-              background: "rgba(22,13,8,0.75)",
+              background: "var(--dark-a85)",
               backdropFilter: "blur(14px)",
               WebkitBackdropFilter: "blur(14px)",
             }}
-            onClick={onClose}
           />
 
-          {/* ── Modal Shell ── */}
+          {/* ── Modal Panel ── */}
           <motion.div
-            key="featured-modal"
-            initial={{ opacity: 0, scale: 0.94, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.94, y: 24 }}
-            transition={{ type: "spring", damping: 32, stiffness: 300 }}
-            className="relative z-10 w-full max-w-5xl flex flex-col overflow-hidden"
+            initial={{ scale: 0.95, opacity: 0, y: 30 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 30 }}
+            transition={{ type: "spring", damping: 26, stiffness: 300 }}
+            className="relative flex flex-col w-full rounded-t-[28px] sm:rounded-[28px] overflow-hidden z-10"
             style={{
+              maxWidth: "960px",
+              maxHeight: "90vh",
               background: "var(--bg-card)",
-              borderRadius: "28px",
-              border: "1px solid rgba(201,151,58,0.28)",
-              boxShadow:
-                "0 40px 100px -15px rgba(22,13,8,0.55), 0 16px 40px -8px rgba(22,13,8,0.3), 0 0 0 1px rgba(201,151,58,0.1)",
-              maxHeight: "92vh",
+              border: "1.5px solid var(--gold-a25)",
+              boxShadow: "0 32px 80px var(--dark-a72), 0 0 0 1px var(--gold-a15)",
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* ── Decorative top gradient line ── */}
+            {/* ── Top gold-to-burgundy accent bar ── */}
             <div
-              className="absolute top-0 left-0 right-0 h-[2px] z-10 rounded-t-[28px]"
+              className="absolute top-0 left-0 right-0 h-[2.5px] z-20"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent 0%, rgba(201,151,58,0.5) 18%, rgba(232,190,92,0.85) 36%, rgba(192,48,96,0.7) 50%, rgba(232,190,92,0.85) 64%, rgba(201,151,58,0.5) 82%, transparent 100%)",
+                  "linear-gradient(90deg, transparent 0%, rgba(232,190,92,0.7) 20%, #C9973A 40%, #C03060 60%, #7A1733 80%, transparent 100%)",
               }}
             />
 
-            {/* ── Decorative radial glow behind header ── */}
+            {/* ── Header ── */}
             <div
-              className="absolute top-0 left-0 right-0 h-28 pointer-events-none"
+              className="flex items-center justify-between px-6 pt-7 pb-5"
               style={{
-                background:
-                  "radial-gradient(ellipse at 50% 0%, rgba(201,151,58,0.06) 0%, transparent 70%)",
+                background: "linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-card) 100%)",
+                borderBottom: "1px solid var(--gold-a25)",
               }}
-            />
-
-            {/* ════════════ HEADER ════════════ */}
-            <div
-              className="relative flex items-center justify-between px-6 py-5 shrink-0"
-              style={{ borderBottom: "1px solid var(--border-color)" }}
             >
-              {/* Left: Icon + Title */}
-              <div className="flex items-center gap-3.5">
+              <div className="flex items-center gap-3">
+                {/* Gold icon disc */}
                 <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-[0_4px_18px_rgba(201,151,58,0.4)]"
+                  className="flex items-center justify-center shrink-0"
                   style={{
-                    background:
-                      "linear-gradient(135deg, #E8BE5C 0%, #C9973A 50%, #9A6D18 100%)",
+                    width: "48px",
+                    height: "48px",
+                    borderRadius: "var(--radius-md)",
+                    background: "var(--gradient-gold)",
+                    boxShadow: "0 4px 20px var(--gold-a40)",
                   }}
                 >
-                  <FiStar size={22} fill="white" stroke="white" />
+                  <HiStar size={24} color="#2C2018" />
                 </div>
-
-                <div className="flex flex-col gap-0.5">
+                <div>
                   <h2
-                    className="text-lg sm:text-xl font-black leading-tight"
-                    style={{ color: "var(--text-main)" }}
+                    className="font-black leading-tight"
+                    style={{ fontSize: "22px", color: "var(--text-main)" }}
                   >
-                    {t("common.most_ordered")}
+                    {t("menu.featured_items") || "الأصناف المميزة"}
                   </h2>
-                  {/* Mini gold/burgundy accent bar */}
-                  <div className="flex items-center gap-1">
-                    <div
-                      className="h-0.5 w-10 rounded-full"
-                      style={{ background: "var(--gradient-gold)" }}
-                    />
-                    <div
-                      className="h-0.5 w-5 rounded-full opacity-70"
-                      style={{ background: "var(--gradient-burgundy)" }}
-                    />
-                  </div>
                   <p
-                    className="text-xs font-semibold"
-                    style={{ color: "var(--text-muted)" }}
+                    className="font-bold mt-0.5"
+                    style={{
+                      fontSize: "12px",
+                      color: "var(--brand-red-light)",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
                   >
-                    {isRtl ? "أفضل ما نقدّمه لكم" : "Our finest selections"}
+                    {t("menu.chef_recommendations") || "توصيات الشيف"}
                   </p>
                 </div>
               </div>
 
-              {/* Right: Item count pill + Close */}
-              <div className="flex items-center gap-3">
-                {items.length > 0 && (
-                  <div
-                    className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(201,151,58,0.1), rgba(201,151,58,0.05))",
-                      border: "1px solid rgba(201,151,58,0.25)",
-                    }}
-                  >
-                    <span
-                      className="text-xs font-black"
-                      style={{ color: "var(--color-primary-dark)" }}
-                    >
-                      {items.length}
-                    </span>
-                    <span
-                      className="text-xs font-semibold"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      {isRtl ? "صنف مميز" : "items"}
-                    </span>
-                  </div>
-                )}
-                <button
-                  onClick={onClose}
-                  className="feedback-close-btn"
-                  style={{ position: "relative", top: "auto", right: "auto" }}
-                  aria-label={isRtl ? "إغلاق" : "Close"}
-                >
-                  <FiX size={17} />
-                </button>
-              </div>
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                aria-label="إغلاق"
+                className="flex items-center justify-center transition-all duration-200"
+                style={{
+                  width: "42px",
+                  height: "42px",
+                  borderRadius: "var(--radius-full)",
+                  background: "var(--bg-surface)",
+                  border: "1.5px solid var(--border-gold)",
+                  color: "var(--text-secondary)",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background = "var(--brand-red)";
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--brand-red)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                  (e.currentTarget as HTMLButtonElement).style.transform = "rotate(90deg)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background = "var(--bg-surface)";
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-gold)";
+                  (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)";
+                  (e.currentTarget as HTMLButtonElement).style.transform = "rotate(0deg)";
+                }}
+              >
+                <FiX size={20} />
+              </button>
             </div>
 
-            {/* ════════════ BODY ════════════ */}
-            <div className="relative flex-1 overflow-hidden">
-              {items.length === 0 ? (
-                /* ── Empty state ── */
-                <div className="flex flex-col items-center justify-center gap-5 py-24 px-8">
-                  <div
-                    className="w-20 h-20 rounded-3xl flex items-center justify-center"
-                    style={{
-                      background: "var(--bg-surface)",
-                      border: "1px solid var(--border-color)",
-                    }}
-                  >
-                    <FiStar size={32} style={{ color: "var(--text-muted)" }} />
-                  </div>
-                  <div className="text-center">
-                    <p
-                      className="font-black text-base"
-                      style={{ color: "var(--text-main)" }}
-                    >
-                      {t("common.no_items_placeholder")}
-                    </p>
-                    <p
-                      className="text-sm font-medium mt-1"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      {isRtl
-                        ? "لا توجد أصناف مميزة حالياً"
-                        : "No featured items available"}
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex flex-col h-full">
-                  {/* ── Carousel Track Wrapper ── */}
-                  <div
-                    className="relative px-4 sm:px-6 pt-5 pb-2 flex-1"
-                    onMouseEnter={() => { isHoveringRef.current = true; stopAutoplay(); }}
-                    onMouseLeave={() => { isHoveringRef.current = false; startAutoplay(); }}
-                  >
-                    {/* Track */}
-                    <div
-                      ref={trackRef}
-                      className="flex gap-4 overflow-x-auto cursor-grab active:cursor-grabbing"
+            {/* ── Carousel ── */}
+            <div
+              className="flex-1 overflow-x-auto overflow-y-hidden custom-scrollbar"
+              style={{
+                scrollSnapType: "x mandatory",
+                WebkitOverflowScrolling: "touch",
+                padding: "24px 24px 28px",
+                display: "flex",
+                gap: "20px",
+                alignItems: "stretch",
+              }}
+            >
+              {items.length > 0 ? (
+                items.map((item, index) => {
+                  const prices = String(item.price).split(",").map((p) => p.trim()).filter(Boolean);
+                  const itemName = item.nameAr || item.name || "";
+                  const description = item.ingredientsAr || item.ingredients || "";
+                  const unavailable = item.visible === false;
+
+                  return (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, x: 40 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.08, duration: 0.4, type: "spring", damping: 20 }}
+                      className="relative shrink-0 flex flex-col group"
                       style={{
-                        scrollSnapType: "x mandatory",
-                        scrollbarWidth: "none",
-                        msOverflowStyle: "none",
-                        WebkitOverflowScrolling: "touch",
-                        userSelect: "none",
+                        scrollSnapAlign: "center",
+                        width: "82vw",
+                        maxWidth: "320px",
+                        height: "460px",
+                        borderRadius: "var(--radius-hero)",
+                        background: "var(--bg-card)",
+                        border: "1.5px solid var(--gold-a25)",
+                        boxShadow: "0 8px 32px var(--dark-a60)",
+                        overflow: "hidden",
+                        opacity: unavailable ? 0.55 : 1,
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        cursor: unavailable ? "not-allowed" : "pointer",
                       }}
-                      onScroll={onScroll}
-                      onMouseDown={onMouseDown}
-                      onMouseMove={onMouseMove}
-                      onMouseUp={onMouseUp}
-                      onMouseLeave={onMouseUp}
-                      onTouchStart={onTouchStart}
-                      onTouchEnd={onTouchEnd}
+                      onMouseEnter={(e) => {
+                        if (unavailable) return;
+                        (e.currentTarget as HTMLDivElement).style.transform = "translateY(-8px)";
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 24px 56px var(--dark-a72), 0 0 0 2px var(--gold-a40)";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (unavailable) return;
+                        (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+                        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px var(--dark-a60)";
+                      }}
+                      onClick={() => {
+                        if (unavailable) return;
+                        onDetailsClick?.(item);
+                        onClose();
+                      }}
                     >
-                      {/* Hide native scrollbar */}
-                      <style>{`.featured-track::-webkit-scrollbar { display: none; }`}</style>
-                      {items.map((item, i) => (
+                      {/* ── Image Area ── */}
+                      <div className="relative w-full overflow-hidden" style={{ height: "55%" }}>
+                        <img
+                          src={item.image ? `/images/${item.image}` : "/logo.png"}
+                          alt={itemName}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).src = "/logo.png";
+                          }}
+                        />
+                        {/* Gradient fade into card bg */}
                         <div
-                          key={item.id}
-                          className="shrink-0"
+                          className="absolute inset-0"
                           style={{
-                            width: `calc(${slideWidthPct}% - ${((slidesPerView - 1) * 16) / slidesPerView}px)`,
-                            scrollSnapAlign: "start",
+                            background: "linear-gradient(to top, var(--bg-card) 0%, transparent 55%)",
+                          }}
+                        />
+
+                        {/* Featured Badge */}
+                        <div
+                          className="absolute top-3 right-3 flex items-center gap-1.5"
+                          style={{
+                            background: "var(--gradient-gold)",
+                            color: "var(--brand-dark)",
+                            padding: "5px 12px",
+                            borderRadius: "var(--radius-full)",
+                            fontWeight: 800,
+                            fontSize: "11px",
+                            boxShadow: "0 4px 14px var(--gold-a40)",
+                            letterSpacing: "0.05em",
                           }}
                         >
-                          <FeaturedCard item={item} index={i} />
+                          <HiStar size={13} />
+                          <span>{t("menu.featured") || "مميز"}</span>
                         </div>
-                      ))}
-                    </div>
 
-                    {/* ── Prev Arrow ── */}
-                    {showArrows && (
-                      <AnimatePresence>
-                        {canGoPrev && (
-                          <motion.button
-                            key="prev-arrow"
-                            initial={{ opacity: 0, x: isRtl ? 10 : -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: isRtl ? 10 : -10 }}
-                            transition={{ duration: 0.25 }}
-                            onClick={goPrev}
-                            className="absolute top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center rounded-full transition-all duration-300"
-                            style={{
-                              [isRtl ? "right" : "left"]: "0px",
-                              background: "rgba(255,255,255,0.92)",
-                              backdropFilter: "blur(8px)",
-                              border: "1px solid rgba(201,151,58,0.3)",
-                              boxShadow: "0 4px 20px rgba(28,18,12,0.15)",
-                              color: "var(--color-primary-dark)",
-                            }}
-                            onMouseEnter={(e) => {
-                              (e.currentTarget as HTMLButtonElement).style.background =
-                                "linear-gradient(135deg, #E8BE5C, #C9973A)";
-                              (e.currentTarget as HTMLButtonElement).style.color = "#fff";
-                            }}
-                            onMouseLeave={(e) => {
-                              (e.currentTarget as HTMLButtonElement).style.background =
-                                "rgba(255,255,255,0.92)";
-                              (e.currentTarget as HTMLButtonElement).style.color =
-                                "var(--color-primary-dark)";
-                            }}
-                            aria-label={isRtl ? "السابق" : "Previous"}
+                        {/* Sold Out Badge */}
+                        {unavailable && (
+                          <div
+                            className="absolute inset-0 flex items-center justify-center"
+                            style={{ background: "rgba(28,18,12,0.60)", backdropFilter: "blur(4px)" }}
                           >
-                            {isRtl ? <FiChevronRight size={20} /> : <FiChevronLeft size={20} />}
-                          </motion.button>
+                            <span
+                              className="font-black text-white text-lg tracking-widest rotate-12 px-4 py-2 rounded-xl"
+                              style={{ border: "2px solid rgba(255,255,255,0.6)" }}
+                            >
+                              {t("menu.sold_out") || "نفذت الكمية"}
+                            </span>
+                          </div>
                         )}
-                      </AnimatePresence>
-                    )}
+                      </div>
 
-                    {/* ── Next Arrow ── */}
-                    {showArrows && (
-                      <AnimatePresence>
-                        {(canGoNext || totalSlides > slidesPerView) && (
-                          <motion.button
-                            key="next-arrow"
-                            initial={{ opacity: 0, x: isRtl ? -10 : 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: isRtl ? -10 : 10 }}
-                            transition={{ duration: 0.25 }}
-                            onClick={goNext}
-                            className="absolute top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center rounded-full transition-all duration-300"
-                            style={{
-                              [isRtl ? "left" : "right"]: "0px",
-                              background: "rgba(255,255,255,0.92)",
-                              backdropFilter: "blur(8px)",
-                              border: "1px solid rgba(201,151,58,0.3)",
-                              boxShadow: "0 4px 20px rgba(28,18,12,0.15)",
-                              color: "var(--color-primary-dark)",
-                            }}
-                            onMouseEnter={(e) => {
-                              (e.currentTarget as HTMLButtonElement).style.background =
-                                "linear-gradient(135deg, #E8BE5C, #C9973A)";
-                              (e.currentTarget as HTMLButtonElement).style.color = "#fff";
-                            }}
-                            onMouseLeave={(e) => {
-                              (e.currentTarget as HTMLButtonElement).style.background =
-                                "rgba(255,255,255,0.92)";
-                              (e.currentTarget as HTMLButtonElement).style.color =
-                                "var(--color-primary-dark)";
-                            }}
-                            aria-label={isRtl ? "التالي" : "Next"}
-                          >
-                            {isRtl ? <FiChevronLeft size={20} /> : <FiChevronRight size={20} />}
-                          </motion.button>
-                        )}
-                      </AnimatePresence>
-                    )}
-                  </div>
-
-                  {/* ════ PAGINATION DOTS ════ */}
-                  {dotCount > 1 && (
-                    <div className="flex items-center justify-center gap-2 py-4 px-6 shrink-0">
-                      {/* Progress bar style */}
+                      {/* ── Content Area ── */}
                       <div
-                        className="flex-1 max-w-[200px] h-0.5 rounded-full overflow-hidden"
-                        style={{ background: "var(--bg-muted)" }}
+                        className="flex flex-col flex-1 p-5"
+                        style={{ background: "var(--bg-card)" }}
                       >
-                        <motion.div
-                          className="h-full rounded-full"
-                          style={{ background: "var(--gradient-gold)" }}
-                          animate={{
-                            width: `${((activeIndex + 1) / dotCount) * 100}%`,
-                          }}
-                          transition={{ duration: 0.4, ease: "easeOut" }}
-                        />
-                      </div>
-
-                      {/* Dot indicators */}
-                      <div className="flex items-center gap-1.5">
-                        {Array.from({ length: Math.min(dotCount, 8) }).map((_, i) => (
-                          <button
-                            key={i}
-                            onClick={() => scrollToIndex(i)}
-                            className="transition-all duration-350"
+                        <div className="flex-1">
+                          <h3
+                            className="font-bold text-xl leading-snug mb-1.5 text-right line-clamp-2"
                             style={{
-                              width: i === activeIndex ? "20px" : "6px",
-                              height: "6px",
-                              borderRadius: "3px",
-                              background:
-                                i === activeIndex
-                                  ? "var(--gradient-gold)"
-                                  : "var(--bg-muted)",
+                              color: "var(--text-main)",
+                              fontFamily: "Alexandria, Cairo, sans-serif",
+                              fontWeight: 700,
                             }}
-                            aria-label={`Go to slide ${i + 1}`}
-                          />
-                        ))}
-                      </div>
+                          >
+                            {itemName}
+                          </h3>
+                          {description && (
+                            <p
+                              className="text-right line-clamp-2 font-medium"
+                              style={{
+                                color: "var(--text-secondary)",
+                                fontSize: "13px",
+                                lineHeight: 1.65,
+                                fontFamily: "Cairo, sans-serif",
+                              }}
+                            >
+                              {description}
+                            </p>
+                          )}
+                        </div>
 
-                      {/* Numeric counter */}
-                      <span
-                        className="text-[11px] font-black tabular-nums shrink-0"
-                        style={{ color: "var(--text-muted)" }}
-                      >
-                        {activeIndex + 1} / {totalSlides}
-                      </span>
-                    </div>
-                  )}
+                        {/* ── Footer / Actions ── */}
+                        <div
+                          className="flex items-center justify-between mt-4 pt-4"
+                          style={{ borderTop: "1px solid var(--border-light)" }}
+                        >
+                          {/* Price display */}
+                          <div
+                            className="flex flex-wrap items-baseline gap-1 font-black"
+                            style={{ color: "var(--brand-red)" }}
+                          >
+                            {prices.map((price, idx) => (
+                              <div
+                                key={idx}
+                                className={`flex items-baseline gap-0.5 font-black ${prices.length > 1 ? "text-[13px]" : "text-[22px]"} leading-none`}
+                                style={{ fontFamily: "Cairo, sans-serif" }}
+                              >
+                                <span className="text-[10px] font-bold opacity-60">₪</span>
+                                {price}
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Details button */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (unavailable) return;
+                              onDetailsClick?.(item);
+                              onClose();
+                            }}
+                            aria-label="عرض التفاصيل"
+                            className="flex items-center justify-center gap-1.5 px-4 py-2 transition-all duration-200"
+                            style={{
+                              borderRadius: "var(--radius-full)",
+                              background: "var(--gradient-gold)",
+                              color: "var(--brand-dark)",
+                              border: "none",
+                              fontWeight: 700,
+                              fontSize: "12px",
+                              fontFamily: "Cairo, sans-serif",
+                              boxShadow: "0 4px 14px var(--gold-a40)",
+                              cursor: "pointer",
+                              transition: "all 0.2s ease",
+                              letterSpacing: "0.04em",
+                              whiteSpace: "nowrap",
+                            }}
+                            onMouseEnter={(e) => {
+                              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.05)";
+                              (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 20px var(--gold-a40)";
+                            }}
+                            onMouseLeave={(e) => {
+                              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
+                              (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 14px var(--gold-a40)";
+                            }}
+                          >
+                            <FiInfo size={14} />
+                            {t("menu.details") || "التفاصيل"}
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })
+              ) : (
+                <div
+                  className="flex flex-col items-center justify-center w-full"
+                  style={{ minHeight: "280px" }}
+                >
+                  <div style={{ fontSize: "56px", opacity: 0.18 }}>🌟</div>
+                  <p
+                    className="mt-4 font-bold text-lg"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {t("menu.no_featured") || "لا توجد أصناف مميزة حالياً"}
+                  </p>
                 </div>
               )}
             </div>
+
+            {/* ── Scroll hint (only when many items) ── */}
+            {items.length > 2 && (
+              <div
+                className="flex justify-center pb-4 gap-1.5"
+                style={{ borderTop: "1px solid var(--gold-a15)" }}
+              >
+                {items.map((_, i) => (
+                  <div
+                    key={i}
+                    className="rounded-full transition-all duration-300"
+                    style={{
+                      width: i === 0 ? "18px" : "6px",
+                      height: "6px",
+                      background: i === 0 ? "var(--brand-gold)" : "var(--gold-a25)",
+                    }}
+                  />
+                ))}
+              </div>
+            )}
           </motion.div>
         </div>
       )}

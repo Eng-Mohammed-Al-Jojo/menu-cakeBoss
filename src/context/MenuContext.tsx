@@ -9,6 +9,8 @@ interface MenuContextType {
   hasLoaded: boolean;
   hasFeaturedItems: boolean;
   complaintsWhatsapp: string;
+  orderSystem: boolean;
+  featuredItems: MenuData['items'];
 }
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
@@ -19,6 +21,8 @@ export function MenuProvider({ children }: { children: ReactNode }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [hasFeaturedItems, setHasFeaturedItems] = useState(false);
   const [complaintsWhatsapp, setComplaintsWhatsapp] = useState("");
+  const [orderSystem, setOrderSystem] = useState(false);
+  const [featuredItems, setFeaturedItems] = useState<MenuData['items']>([]);
 
   useEffect(() => {
     let unsubscribeMenu: (() => void) | null = null;
@@ -27,14 +31,20 @@ export function MenuProvider({ children }: { children: ReactNode }) {
       try {
         const { data } = await MenuService.getMenuWithFallback();
         setMenuData(data);
-        setHasFeaturedItems(data.items.some(item => item.star === true && item.visible !== false));
+        const featured = data.items.filter(item => item.star === true && item.visible !== false);
+        setHasFeaturedItems(featured.length > 0);
+        setFeaturedItems(featured);
+        setOrderSystem(data.orderSystem);
         setHasLoaded(true);
         setIsLoading(false);
 
         // Subscribe to live updates
         unsubscribeMenu = MenuService.subscribeToMenuUpdates((freshData) => {
           setMenuData(freshData);
-          setHasFeaturedItems(freshData.items.some(item => item.star === true && item.visible !== false));
+          const freshFeatured = freshData.items.filter(item => item.star === true && item.visible !== false);
+          setHasFeaturedItems(freshFeatured.length > 0);
+          setFeaturedItems(freshFeatured);
+          setOrderSystem(freshData.orderSystem);
         });
       } catch (err) {
         console.error("Menu Context initialization failed:", err);
@@ -58,7 +68,7 @@ export function MenuProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <MenuContext.Provider value={{ menuData, isLoading, hasLoaded, hasFeaturedItems, complaintsWhatsapp }}>
+    <MenuContext.Provider value={{ menuData, isLoading, hasLoaded, hasFeaturedItems, complaintsWhatsapp, orderSystem, featuredItems }}>
       {children}
     </MenuContext.Provider>
   );

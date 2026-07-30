@@ -99,6 +99,7 @@
 
   /* Text */
   --text-main: #2C2018;
+  --text-primary: #2C2018;
   --text-secondary: #6B5A4E;
   --text-muted: #B5A99C;
   --text-gold: #C9973A;
@@ -109,6 +110,7 @@
   --border-gold: rgba(201, 151, 58, 0.35);
   --border-gold-heavy: rgba(201, 151, 58, 0.60);
   --border-burgundy: rgba(122, 23, 51, 0.25);
+  --border-light: rgba(201, 151, 58, 0.2);
 
   /* Gradients */
   --gradient-gold: linear-gradient(135deg, #E8BE5C 0%, #C9973A 50%, #9A6D18 100%);
@@ -116,6 +118,34 @@
   --gradient-burgundy: linear-gradient(135deg, #C03060 0%, #7A1733 100%);
   --gradient-bg: linear-gradient(160deg, #FDFBF8 0%, #FAF6EF 40%, #F5EEE2 100%);
   --gradient-hero: linear-gradient(180deg, rgba(253, 249, 240, 0) 0%, rgba(250, 246, 239, 0.6) 50%, #FAF6EF 100%);
+
+  /* ── Brand Aliases (used in modals & cards) ── */
+  --brand-gold: #C9973A;
+  --brand-gold-light: #E8BE5C;
+  --brand-gold-dark: #9A6D18;
+  --brand-dark: #2C2018;
+  --brand-red: #7A1733;
+  --brand-red-light: #C03060;
+  --brand-red-dark: #560E21;
+
+  /* ── Alpha / Semi-transparent overlays ── */
+  --dark-a85: rgba(28, 18, 12, 0.85);
+  --dark-a72: rgba(28, 18, 12, 0.72);
+  --dark-a60: rgba(28, 18, 12, 0.60);
+  --gold-a40: rgba(201, 151, 58, 0.40);
+  --gold-a25: rgba(201, 151, 58, 0.25);
+  --gold-a15: rgba(201, 151, 58, 0.15);
+
+  /* ── Border Radius Tokens ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-hero: 24px;
+  --radius-full: 9999px;
+
+  /* ── Button Shadows ── */
+  --shadow-button: 0 4px 16px -2px rgba(122, 23, 51, 0.40);
 }
 
 /* ── Admin Dashboard Burgundy Theme Override ── */

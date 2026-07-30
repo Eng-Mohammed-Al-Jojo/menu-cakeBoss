@@ -104,7 +104,7 @@ const CategoryCard: React.FC<{
               <span className="text-[10px] font-bold uppercase tracking-widest">{t('admin.add_image')}</span>
             </div>
           )}
-          
+
           {/* Image Controls Overlay */}
           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center gap-2">
             <button
@@ -136,10 +136,10 @@ const CategoryCard: React.FC<{
 
           {/* Visibility Badge */}
           <div className="absolute top-3 left-3">
-             <button
+            <button
               onClick={() => toggleCategoryVisibility(cat.id, cat.visible ?? true)}
-              className={`p-2 rounded-xl backdrop-blur-md transition-all ${cat.visible 
-                ? "bg-green-500/20 text-green-400 border border-green-500/30" 
+              className={`p-2 rounded-xl backdrop-blur-md transition-all ${cat.visible
+                ? "bg-green-500/20 text-green-400 border border-green-500/30"
                 : "bg-red-500/20 text-red-400 border border-red-500/30"}`}
             >
               {cat.visible ? <FiEye size={14} /> : <FiEyeOff size={14} />}
@@ -198,8 +198,8 @@ const CategoryCard: React.FC<{
             </button>
 
             <button
-               onClick={() => setPopup({ type: "deleteCategory", id: cat.id })}
-               className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all border border-red-100"
+              onClick={() => setPopup({ type: "deleteCategory", id: cat.id })}
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all border border-red-100"
             >
               <FiTrash2 size={16} />
             </button>
@@ -423,7 +423,7 @@ const CategorySection: React.FC<Props> = ({
                   items={categoriesArray.map((c) => c.id)}
                   strategy={verticalListSortingStrategy}
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {categoriesArray.map((cat) => (
                       <CategoryCard
                         key={cat.id}

@@ -72,42 +72,89 @@ export default function CategorySection({ category, subcategories, items }: Prop
             transition={{ delay: subIdx * 0.07, duration: 0.5 }}
             className="flex flex-col gap-6"
           >
-            {/* ── Subcategory Header ── */}
-            <div className="flex flex-col items-end gap-2.5">
-              {/* Title row with burgundy dot */}
-              <div className="flex items-center gap-3">
-                {/* Burgundy dot — larger and more vibrant */}
+            {/* ── Subcategory Header (Centered Modern Luxury Design) ── */}
+            <div className="flex flex-col items-center justify-center gap-2.5 my-2 w-full">
+              <div className="flex items-center justify-center w-full max-w-xl px-2">
+                {/* Left Gradient Line */}
                 <div
-                  className="w-3 h-3 rounded-full shrink-0"
+                  className="h-[1.5px] flex-1 rounded-full opacity-60"
                   style={{
-                    background: "linear-gradient(135deg, #C03060, #7A1733)",
-                    boxShadow: "0 0 10px rgba(122,23,51,0.5), 0 0 0 3px rgba(122,23,51,0.12)",
+                    background:
+                      "linear-gradient(90deg, transparent 0%, rgba(122,23,51,0.2) 50%, rgba(201,151,58,0.6) 100%)",
                   }}
                 />
-                <h3
-                  className="text-xl sm:text-2xl font-black tracking-tight"
-                  style={{ color: "var(--text-main)" }}
+
+                {/* Center Subcategory Pill */}
+                <div
+                  className="mx-2 sm:mx-4 px-5 sm:px-7 py-2 sm:py-2.5 rounded-full flex items-center gap-2.5 sm:gap-3 shrink-0 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
+                  style={{
+                    background: "var(--bg-card)",
+                    border: "1px solid rgba(201, 151, 58, 0.28)",
+                    boxShadow:
+                      "0 4px 20px -4px rgba(122, 23, 51, 0.07), 0 2px 10px rgba(201, 151, 58, 0.08)",
+                  }}
                 >
-                  {i18n.language === "en" ? (sub.nameEn || sub.nameAr) : sub.nameAr}
-                </h3>
+                  {/* Left Burgundy Glow Dot */}
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{
+                      background: "linear-gradient(135deg, #C03060, #7A1733)",
+                      boxShadow: "0 0 8px rgba(122, 23, 51, 0.45)",
+                    }}
+                  />
+
+                  {/* Subcategory Title */}
+                  <h3
+                    className="text-lg sm:text-xl font-black tracking-tight text-center"
+                    style={{ color: "var(--text-main)" }}
+                  >
+                    {i18n.language === "en" ? (sub.nameEn || sub.nameAr) : sub.nameAr}
+                  </h3>
+
+                  {/* Right Gold Glow Dot */}
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{
+                      background: "linear-gradient(135deg, #E8BE5C, #C9973A)",
+                      boxShadow: "0 0 8px rgba(201, 151, 58, 0.5)",
+                    }}
+                  />
+                </div>
+
+                {/* Right Gradient Line */}
+                <div
+                  className="h-[1.5px] flex-1 rounded-full opacity-60"
+                  style={{
+                    background:
+                      "linear-gradient(270deg, transparent 0%, rgba(122,23,51,0.2) 50%, rgba(201,151,58,0.6) 100%)",
+                  }}
+                />
               </div>
 
-              {/* Burgundy + gold decorative underline */}
-              <div className="flex items-center gap-1 self-end">
+              {/* Symmetrical Micro Underline Accent */}
+              <div className="flex items-center gap-1">
                 <div
                   className="h-0.5 rounded-full"
                   style={{
-                    width: "20px",
+                    width: "16px",
                     background: "var(--gradient-burgundy)",
-                    opacity: 0.8,
+                    opacity: 0.6,
                   }}
                 />
                 <div
                   className="h-0.5 rounded-full"
                   style={{
-                    width: "52px",
+                    width: "36px",
                     background: "var(--gradient-gold)",
-                    boxShadow: "0 1px 6px rgba(201,151,58,0.35)",
+                    boxShadow: "0 1px 4px rgba(201,151,58,0.3)",
+                  }}
+                />
+                <div
+                  className="h-0.5 rounded-full"
+                  style={{
+                    width: "16px",
+                    background: "var(--gradient-burgundy)",
+                    opacity: 0.6,
                   }}
                 />
               </div>

@@ -47,7 +47,7 @@ const FeaturedGallery: React.FC<Props> = ({ visible, onClose, onSelect, galleryI
                         {/* Header */}
                         <div className="p-6 border-b border-(--border-color) flex items-center justify-between bg-(--bg-main)/30">
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center text-xl shadow-inner">
+                                <div className="w-12 h-12 rounded-2xl bg-secondary/15 text-secondary flex items-center justify-center text-xl shadow-inner">
                                     <FiImage />
                                 </div>
                                 <div>

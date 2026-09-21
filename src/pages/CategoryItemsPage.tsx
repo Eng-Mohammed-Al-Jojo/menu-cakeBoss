@@ -89,7 +89,7 @@ export default function CategoryItemsPage() {
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle at center, rgba(201,151,58,0.08) 0%, transparent 65%)",
+                  "radial-gradient(circle at center, rgba(74,86,56,0.08) 0%, transparent 65%)",
               }}
             />
 
@@ -99,7 +99,7 @@ export default function CategoryItemsPage() {
                 className="absolute rounded-full border"
                 style={{
                   inset: 0,
-                  borderColor: "rgba(201,151,58,0.15)",
+                  borderColor: "rgba(74,86,56,0.15)",
                 }}
                 animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.2, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -115,7 +115,7 @@ export default function CategoryItemsPage() {
                   cx="80"
                   cy="80"
                   r="72"
-                  stroke="rgba(201,151,58,0.08)"
+                  stroke="rgba(74,86,56,0.08)"
                   strokeWidth="2"
                   fill="none"
                 />
@@ -123,7 +123,7 @@ export default function CategoryItemsPage() {
                   cx="80"
                   cy="80"
                   r="72"
-                  stroke="#C9973A"
+                  stroke="#556B43"
                   strokeWidth="2.5"
                   fill="none"
                   strokeLinecap="round"
@@ -140,8 +140,8 @@ export default function CategoryItemsPage() {
                 style={{
                   width: "88px",
                   height: "88px",
-                  background: "linear-gradient(145deg, #E8BE5C, #C9973A, #9A6D18)",
-                  boxShadow: "0 4px 24px rgba(201,151,58,0.4)",
+                  background: "linear-gradient(145deg, #6B8457, #556B43, #B79275)",
+                  boxShadow: "0 4px 24px rgba(74,86,56,0.35)",
                 }}
                 animate={{ scale: [0.97, 1.03, 0.97] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -167,8 +167,8 @@ export default function CategoryItemsPage() {
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               <span
-                className="font-bold text-sm tracking-widest uppercase"
-                style={{ color: "var(--color-primary)", letterSpacing: "0.1em" }}
+                className="font-bold text-sm tracking-widest uppercase text-olive-700"
+                style={{ letterSpacing: "0.1em" }}
               >
                 {isRtl ? "جارٍ العودة" : "Going back"}
               </span>
@@ -176,8 +176,7 @@ export default function CategoryItemsPage() {
                 {[0, 1, 2].map((i) => (
                   <motion.span
                     key={i}
-                    className="w-1.5 h-1.5 rounded-full inline-block"
-                    style={{ background: "var(--color-primary)" }}
+                    className="w-1.5 h-1.5 rounded-full inline-block bg-olive-600"
                     animate={{ y: [0, -5, 0] }}
                     transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }}
                   />
@@ -190,39 +189,17 @@ export default function CategoryItemsPage() {
 
       {/* ═══ HEADER ═══ */}
       <header
-        className="sticky top-0 z-50 px-4 sm:px-6 py-3.5 flex items-center justify-between"
-        style={{
-          background: "rgba(253,251,248,0.90)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          borderBottom: "1px solid var(--border-color)",
-          boxShadow: "0 2px 20px rgba(122,23,51,0.06), 0 1px 8px rgba(201,151,58,0.06)",
-        }}
+        className="sticky top-0 z-50 px-4 sm:px-6 py-3.5 flex items-center justify-between bg-white/90 backdrop-blur-md border-b border-(--border-color) shadow-[0_2px_16px_rgba(74,86,56,0.06)]"
       >
-        {/* Dual-tone bottom border: gold + burgundy */}
+        {/* Dual-tone bottom border: olive + mocha */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-[2px]"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(201,151,58,0.4) 25%, rgba(232,190,92,0.7) 40%, rgba(192,48,96,0.55) 50%, rgba(232,190,92,0.7) 60%, rgba(201,151,58,0.4) 75%, transparent 100%)",
-          }}
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-olive-500/60 to-mocha-500/60"
         />
 
-        {/* Back Button — burgundy hover */}
+        {/* Back Button */}
         <button
           onClick={handleBack}
-          className="flex items-center gap-2 font-black rounded-xl px-3.5 py-2 transition-all duration-250"
-          style={{ color: "var(--color-accent)" }}
-          onMouseEnter={(e) => {
-            const b = e.currentTarget as HTMLButtonElement;
-            b.style.background = "rgba(122,23,51,0.08)";
-            b.style.color = "var(--color-accent-dark)";
-          }}
-          onMouseLeave={(e) => {
-            const b = e.currentTarget as HTMLButtonElement;
-            b.style.background = "transparent";
-            b.style.color = "var(--color-accent)";
-          }}
+          className="flex items-center gap-2 font-black rounded-xl px-3.5 py-2 transition-all duration-200 text-olive-800 hover:text-olive-900 hover:bg-olive-50"
         >
           {isRtl ? <FiArrowRight size={22} /> : <FiArrowLeft size={22} />}
           <span className="text-sm">{t("common.back")}</span>
@@ -231,20 +208,17 @@ export default function CategoryItemsPage() {
         {/* Category Title */}
         <div className="flex flex-col items-center gap-1">
           <h1
-            className="text-lg font-black tracking-tight"
-            style={{ color: "var(--text-main)" }}
+            className="text-lg font-black tracking-tight text-(--text-main)"
           >
             {category.nameAr || category.name}
           </h1>
-          {/* Burgundy + gold underline */}
+          {/* Olive + mocha underline */}
           <div className="flex items-center gap-0.5">
             <div
-              className="h-0.5 w-4 rounded-full"
-              style={{ background: "var(--gradient-burgundy)" }}
+              className="h-0.5 w-5 rounded-full bg-gradient-to-r from-olive-600 to-olive-500"
             />
             <div
-              className="h-0.5 w-6 rounded-full"
-              style={{ background: "var(--gradient-gold)" }}
+              className="h-0.5 w-4 rounded-full bg-gradient-to-r from-mocha-500 to-mocha-400"
             />
           </div>
         </div>

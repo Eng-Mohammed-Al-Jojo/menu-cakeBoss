@@ -31,8 +31,8 @@ function InfoCard({ icon, label, value, href }: InfoCardProps) {
     <div
       className="flex items-start gap-3 p-4 rounded-2xl transition-all duration-300"
       style={{
-        background: "rgba(255,255,255,0.05)",
-        border: "1px solid rgba(212,175,114,0.14)",
+        background: "rgba(255,255,255,0.09)",
+        border: "1px solid rgba(228,215,195,0.30)",
       }}
     >
       {/* Icon bubble */}
@@ -49,13 +49,13 @@ function InfoCard({ icon, label, value, href }: InfoCardProps) {
       <div className="flex flex-col gap-0.5 min-w-0">
         <span
           className="text-[9px] font-black uppercase tracking-[0.18em]"
-          style={{ color: "rgba(212,175,114,0.6)" }}
+          style={{ color: "#E4D7C3" }}
         >
           {label}
         </span>
         <span
           className="text-sm font-bold leading-snug break-words"
-          style={{ color: "#FBF8F3" }}
+          style={{ color: "#FFFFFF" }}
         >
           {value}
         </span>
@@ -174,13 +174,13 @@ export default function Footer() {
       {/* ── Curved top transition ── */}
       <div
         className="absolute top-0 left-0 w-full h-24 -translate-y-full pointer-events-none"
-        style={{ background: "linear-gradient(160deg, #3A0512, #5C0C21)" }}
+        style={{ background: "linear-gradient(160deg, #1C2214, #232A1E)" }}
       >
         <div
           className="absolute bottom-0 w-full h-24"
           style={{
-            background: "linear-gradient(160deg, #3A0512, #5C0C21)",
-            boxShadow: "0 -20px 40px -15px rgba(58,5,18,0.25)",
+            background: "linear-gradient(160deg, #1C2214, #232A1E)",
+            boxShadow: "0 -20px 40px -15px rgba(25,29,22,0.30)",
           }}
         />
       </div>
@@ -190,7 +190,7 @@ export default function Footer() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(160deg, #3A0512 0%, #5C0C21 40%, #7A1733 80%, #C9973A 100%)",
+            "linear-gradient(160deg, #191D16 0%, #232A1E 35%, #334028 70%, #816148 100%)",
         }}
       />
 
@@ -210,7 +210,7 @@ export default function Footer() {
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, #D4AF72, #C4963A, #D4AF72, transparent)",
+            "linear-gradient(90deg, transparent, #6B8457, #B79275, #6B8457, transparent)",
         }}
       />
 

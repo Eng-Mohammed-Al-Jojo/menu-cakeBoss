@@ -220,7 +220,7 @@ const Popup: React.FC<Props> = ({
             {/* ===== Add/Delete Category ===== */}
             {(popup.type === "addCategory" || popup.type === "deleteCategory") && (
               <div className="text-center space-y-6">
-                <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner ${popup.type === 'deleteCategory' ? 'bg-red-50 text-red-500' : 'bg-green-50 text-green-500'}`}>
+                <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner ${popup.type === 'deleteCategory' ? 'bg-red-50 text-red-500' : 'bg-primary/10 text-primary'}`}>
                   {popup.type === 'deleteCategory' ? <FiTrash2 /> : <FiLayers />}
                 </div>
                 <div>
@@ -235,7 +235,7 @@ const Popup: React.FC<Props> = ({
                       else deleteCategory && deleteCategory(popup.id!);
                       closePopup();
                     }}
-                    className={`flex-1 py-4 rounded-2xl text-white font-black shadow-xl transition-all hover:scale-[1.02] active:scale-95 ${popup.type === 'deleteCategory' ? 'bg-red-500 shadow-red-500/20' : 'bg-green-500 shadow-green-500/20'}`}
+                    className={`flex-1 py-4 rounded-2xl text-white font-black shadow-xl transition-all hover:scale-[1.02] active:scale-95 ${popup.type === 'deleteCategory' ? 'bg-red-500 shadow-red-500/20' : 'bg-primary shadow-primary/20'}`}
                   >
                     {popup.type === "addCategory" ? t('common.save') : t('common.delete')}
                   </button>
@@ -330,7 +330,7 @@ const Popup: React.FC<Props> = ({
               <div className="space-y-6">
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center text-xl shadow-inner">
+                    <div className="w-12 h-12 rounded-2xl bg-secondary/15 text-secondary flex items-center justify-center text-xl shadow-inner">
                       <FiEdit />
                     </div>
                     <div>
@@ -424,7 +424,7 @@ const Popup: React.FC<Props> = ({
             {resetPasswordPopup && (
               <div className="space-y-6">
                 <div className="text-center space-y-4 mb-6">
-                  <div className="w-20 h-20 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
+                  <div className="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
                     <FiKey />
                   </div>
                   <div>
@@ -446,7 +446,7 @@ const Popup: React.FC<Props> = ({
 
                 <AnimatePresence>
                   {resetMessage && (
-                    <motion.p initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="text-xs text-center text-green-600 font-bold bg-green-50 p-3 rounded-xl border border-green-100">
+                    <motion.p initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="text-xs text-center text-primary font-bold bg-primary/10 p-3 rounded-xl border border-primary/20">
                       {resetMessage}
                     </motion.p>
                   )}

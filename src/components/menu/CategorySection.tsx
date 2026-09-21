@@ -77,85 +77,47 @@ export default function CategorySection({ category, subcategories, items }: Prop
               <div className="flex items-center justify-center w-full max-w-xl px-2">
                 {/* Left Gradient Line */}
                 <div
-                  className="h-[1.5px] flex-1 rounded-full opacity-60"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent 0%, rgba(122,23,51,0.2) 50%, rgba(201,151,58,0.6) 100%)",
-                  }}
+                  className="h-[1.5px] flex-1 rounded-full opacity-60 bg-gradient-to-r from-transparent via-mocha-400/30 to-olive-500/70"
                 />
 
                 {/* Center Subcategory Pill */}
                 <div
-                  className="mx-2 sm:mx-4 px-5 sm:px-7 py-2 sm:py-2.5 rounded-full flex items-center gap-2.5 sm:gap-3 shrink-0 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
-                  style={{
-                    background: "var(--bg-card)",
-                    border: "1px solid rgba(201, 151, 58, 0.28)",
-                    boxShadow:
-                      "0 4px 20px -4px rgba(122, 23, 51, 0.07), 0 2px 10px rgba(201, 151, 58, 0.08)",
-                  }}
+                  className="mx-2 sm:mx-4 px-5 sm:px-7 py-2 sm:py-2.5 rounded-full flex items-center gap-2.5 sm:gap-3 shrink-0 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] bg-white border border-olive-500/25 shadow-sm"
                 >
-                  {/* Left Burgundy Glow Dot */}
+                  {/* Left Mocha Dot */}
                   <span
-                    className="w-2.5 h-2.5 rounded-full shrink-0"
-                    style={{
-                      background: "linear-gradient(135deg, #C03060, #7A1733)",
-                      boxShadow: "0 0 8px rgba(122, 23, 51, 0.45)",
-                    }}
+                    className="w-2.5 h-2.5 rounded-full shrink-0 bg-gradient-to-br from-mocha-400 to-mocha-600 shadow-[0_0_8px_rgba(183,146,117,0.5)]"
                   />
 
                   {/* Subcategory Title */}
                   <h3
-                    className="text-lg sm:text-xl font-black tracking-tight text-center"
-                    style={{ color: "var(--text-main)" }}
+                    className="text-lg sm:text-xl font-black tracking-tight text-center text-(--text-main)"
                   >
                     {i18n.language === "en" ? (sub.nameEn || sub.nameAr) : sub.nameAr}
                   </h3>
 
-                  {/* Right Gold Glow Dot */}
+                  {/* Right Olive Dot */}
                   <span
-                    className="w-2.5 h-2.5 rounded-full shrink-0"
-                    style={{
-                      background: "linear-gradient(135deg, #E8BE5C, #C9973A)",
-                      boxShadow: "0 0 8px rgba(201, 151, 58, 0.5)",
-                    }}
+                    className="w-2.5 h-2.5 rounded-full shrink-0 bg-gradient-to-br from-olive-400 to-olive-600 shadow-[0_0_8px_rgba(74,86,56,0.5)]"
                   />
                 </div>
 
                 {/* Right Gradient Line */}
                 <div
-                  className="h-[1.5px] flex-1 rounded-full opacity-60"
-                  style={{
-                    background:
-                      "linear-gradient(270deg, transparent 0%, rgba(122,23,51,0.2) 50%, rgba(201,151,58,0.6) 100%)",
-                  }}
+                  className="h-[1.5px] flex-1 rounded-full opacity-60 bg-gradient-to-l from-transparent via-mocha-400/30 to-olive-500/70"
                 />
               </div>
 
               {/* Symmetrical Micro Underline Accent */}
               <div className="flex items-center gap-1">
                 <div
-                  className="h-0.5 rounded-full"
-                  style={{
-                    width: "16px",
-                    background: "var(--gradient-burgundy)",
-                    opacity: 0.6,
-                  }}
+                  className="h-0.5 rounded-full w-4 bg-gradient-to-r from-mocha-400 to-mocha-500 opacity-70"
                 />
                 <div
-                  className="h-0.5 rounded-full"
-                  style={{
-                    width: "36px",
-                    background: "var(--gradient-gold)",
-                    boxShadow: "0 1px 4px rgba(201,151,58,0.3)",
-                  }}
+                  className="h-0.5 rounded-full w-9 bg-gradient-to-r from-olive-600 to-olive-500 shadow-sm"
                 />
                 <div
-                  className="h-0.5 rounded-full"
-                  style={{
-                    width: "16px",
-                    background: "var(--gradient-burgundy)",
-                    opacity: 0.6,
-                  }}
+                  className="h-0.5 rounded-full w-4 bg-gradient-to-r from-mocha-400 to-mocha-500 opacity-70"
                 />
               </div>
             </div>
@@ -175,11 +137,7 @@ export default function CategorySection({ category, subcategories, items }: Prop
             {/* Bottom divider (not on last) */}
             {subIdx < activeSubcategories.length - 1 && (
               <div
-                className="mt-4 h-px"
-                style={{
-                  background:
-                    "linear-gradient(90deg, transparent 0%, rgba(122,23,51,0.15) 30%, rgba(201,151,58,0.25) 50%, rgba(122,23,51,0.15) 70%, transparent 100%)",
-                }}
+                className="mt-4 h-px bg-gradient-to-r from-transparent via-olive-500/20 to-transparent"
               />
             )}
           </motion.div>

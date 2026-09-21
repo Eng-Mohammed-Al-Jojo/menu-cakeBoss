@@ -136,7 +136,7 @@ export default function MenuPage() {
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square max-w-[800px] -z-10 pointer-events-none opacity-40 blur-[100px]"
           style={{
-            background: "radial-gradient(circle, rgba(201, 151, 58, 0.25) 0%, rgba(122, 23, 51, 0.12) 50%, transparent 70%)"
+            background: "radial-gradient(circle, rgba(74, 86, 56, 0.20) 0%, rgba(183, 146, 117, 0.12) 50%, transparent 70%)"
           }}
         />
 
@@ -145,7 +145,7 @@ export default function MenuPage() {
           className="absolute top-0 left-0 right-0 h-[2px] pointer-events-none"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, rgba(201,151,58,0.5) 30%, rgba(232,190,92,0.8) 50%, rgba(192,48,96,0.4) 70%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, rgba(74,86,56,0.4) 30%, rgba(107,123,83,0.7) 50%, rgba(183,146,117,0.5) 70%, transparent 100%)",
           }}
         />
 
@@ -160,14 +160,14 @@ export default function MenuPage() {
             className="relative mb-8 mt-4"
           >
             {/* Outer halo / pulse rings */}
-            <div className="absolute -inset-4 rounded-full bg-radial-gradient from-gold-500/20 to-transparent blur-xl animate-halo" />
+            <div className="absolute -inset-4 rounded-full bg-radial-gradient from-olive-500/20 to-transparent blur-xl animate-halo" />
 
             {/* Logo Container */}
             <div
               className="relative w-40 h-40 md:w-56 md:h-56 rounded-full p-[3px] shadow-2xl transition-transform duration-500 hover:scale-105 animate-logo-float"
               style={{
-                background: "linear-gradient(135deg, #E8BE5C 0%, #C9973A 50%, #7A1733 100%)",
-                boxShadow: "var(--shadow-premium), 0 0 0 1px rgba(255,255,255,0.4)",
+                background: "linear-gradient(135deg, #6B8457 0%, #435435 50%, #B79275 100%)",
+                boxShadow: "var(--shadow-premium), 0 0 0 1px rgba(255,255,255,0.6)",
               }}
             >
               <div
@@ -192,14 +192,13 @@ export default function MenuPage() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="flex flex-col items-center"
             >
-              <h1 className="text-4xl md:text-5xl font-black tracking-wider uppercase drop-shadow-sm select-none"
+              <h1 className="text-4xl md:text-5xl font-black tracking-wider uppercase drop-shadow-sm select-none font-serif"
                 style={{
-                  fontFamily: "'Playpen Sans Arabic', sans-serif",
-                  background: "var(--gradient-gold)",
+                  background: "linear-gradient(135deg, #435435 0%, #222B1B 70%, #816148 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}>
-                CakeBoss
+                Cake Boss
               </h1>
 
             </motion.div>

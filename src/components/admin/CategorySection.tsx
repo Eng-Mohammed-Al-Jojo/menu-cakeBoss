@@ -139,7 +139,7 @@ const CategoryCard: React.FC<{
             <button
               onClick={() => toggleCategoryVisibility(cat.id, cat.visible ?? true)}
               className={`p-2 rounded-xl backdrop-blur-md transition-all ${cat.visible
-                ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                ? "bg-primary/20 text-primary border border-primary/30"
                 : "bg-red-500/20 text-red-400 border border-red-500/30"}`}
             >
               {cat.visible ? <FiEye size={14} /> : <FiEyeOff size={14} />}
@@ -161,7 +161,7 @@ const CategoryCard: React.FC<{
                 />
                 <button
                   onClick={() => saveEdit(cat.id)}
-                  className="p-2 rounded-xl bg-green-500 text-white shrink-0"
+                  className="p-2 rounded-xl bg-primary text-white shrink-0"
                 >
                   <FiCheck />
                 </button>
@@ -251,7 +251,7 @@ const CategoryCard: React.FC<{
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => toggleSubcategoryVisibility(id, sub.visible ?? true)}
-                            className={`p-1 rounded-lg transition-colors ${sub.visible ? "text-green-500" : "text-red-400"}`}
+                            className={`p-1 rounded-lg transition-colors ${sub.visible ? "text-primary" : "text-red-400"}`}
                           >
                             {sub.visible ? <FiEye size={12} /> : <FiEyeOff size={12} />}
                           </button>

@@ -378,7 +378,7 @@ export default function Admin() {
             <div className="text-center">
               <button
                 onClick={() => setResetPasswordPopup(true)}
-                className="text-xs font-black text-red-500 hover:text-red-600 transition-colors uppercase tracking-widest"
+                className="text-xs font-black text-primary hover:text-(--color-primary-dark) transition-colors uppercase tracking-widest"
               >
                 {t('admin.forgot_password')}
               </button>
@@ -428,7 +428,7 @@ export default function Admin() {
             <div>
               <h1 className="text-xl sm:text-2xl font-black text-(--text-main)">{t('admin.menu_management')}</h1>
               <div className="flex flex-wrap items-center gap-3 mt-0.5">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <p className="text-(--text-muted) text-[9px] sm:text-[10px] uppercase font-black tracking-widest">{t('admin.dashboard_active')}</p>
               </div>
             </div>
@@ -441,13 +441,13 @@ export default function Admin() {
                 <FiSettings size={20} />
               </button>
               <div className="w-px h-6 bg-(--border-color)" />
-              <button onClick={exportToExcel} className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-green-50 hover:text-green-500 text-(--text-muted) transition-all" title={t('admin.export_excel')}>
+              <button onClick={exportToExcel} className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-primary/10 hover:text-primary text-(--text-muted) transition-all" title={t('admin.export_excel')}>
                 <FiUpload size={20} />
               </button>
-              <button onClick={() => document.getElementById("excelUpload")?.click()} className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-blue-50 hover:text-blue-500 text-(--text-muted) transition-all" title={t('admin.import_excel')}>
+              <button onClick={() => document.getElementById("excelUpload")?.click()} className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-primary/10 hover:text-primary text-(--text-muted) transition-all" title={t('admin.import_excel')}>
                 <FiDownload size={20} />
               </button>
-              <button onClick={exportToJSON} className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-amber-50 hover:text-amber-500 text-(--text-muted) transition-all" title={t('admin.backup')}>
+              <button onClick={exportToJSON} className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-secondary/15 hover:text-secondary text-(--text-muted) transition-all" title={t('admin.backup')}>
                 <FiDatabase size={20} />
               </button>
             </div>

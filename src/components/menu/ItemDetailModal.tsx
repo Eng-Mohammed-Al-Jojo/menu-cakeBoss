@@ -22,7 +22,6 @@ export default function ItemDetailModal({
   onClose,
   item,
   categoryName,
-  orderSystem = false,
 }: Props) {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.language === "ar";
@@ -302,17 +301,7 @@ export default function ItemDetailModal({
                   )}
                 </div>
 
-                {/* ── Ordering controls (only when enabled) ── */}
-                {orderSystem && !unavailable && (
-                  <div className="flex items-center gap-3 pt-1">
-                    <button
-                      className="btn-primary flex-1"
-                      style={{ fontSize: "0.9rem", padding: "12px 20px" }}
-                    >
-                      {isRtl ? "أضف للسلة" : "Add to Cart"}
-                    </button>
-                  </div>
-                )}
+
               </div>
             </div>
           </motion.div>

@@ -91,16 +91,16 @@ export default function FeedbackModal({ isOpen, onClose, complaintsWhatsapp }: P
               boxShadow: "0 24px 80px rgba(44,32,24,0.35)",
             }}
           >
-            {/* Gold top border */}
+            {/* Olive top border */}
             <div
               className="absolute top-0 left-0 right-0 h-0.5"
-              style={{ background: "linear-gradient(90deg, transparent 0%, #C9973A 30%, #E8BE5C 50%, #C9973A 70%, transparent 100%)" }}
+              style={{ background: "linear-gradient(90deg, transparent 0%, #556B43 30%, #8FA87E 50%, #B79275 70%, transparent 100%)" }}
             />
 
             {/* Background radial decoration */}
             <div
               className="absolute inset-0 pointer-events-none"
-              style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(201,151,58,0.06) 0%, transparent 60%)" }}
+              style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(74,86,56,0.06) 0%, transparent 60%)" }}
             />
 
             {/* Close Button */}
@@ -125,7 +125,7 @@ export default function FeedbackModal({ isOpen, onClose, complaintsWhatsapp }: P
                   <div
                     className="mb-4 w-14 h-14 flex items-center justify-center rounded-2xl"
                     style={{
-                      background: "linear-gradient(135deg, rgba(201,151,58,0.15), rgba(201,151,58,0.08))",
+                      background: "linear-gradient(135deg, rgba(74,86,56,0.15), rgba(74,86,56,0.08))",
                       border: "1px solid var(--border-gold)",
                     }}
                   >
@@ -150,9 +150,9 @@ export default function FeedbackModal({ isOpen, onClose, complaintsWhatsapp }: P
 
                   {/* Ornamental divider */}
                   <div className="flex items-center gap-3 w-40 mb-4 sm:mb-6">
-                    <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(201,151,58,0.4))" }} />
+                    <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(74,86,56,0.4))" }} />
                     <div className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--gradient-gold)" }} />
-                    <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, rgba(201,151,58,0.4), transparent)" }} />
+                    <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, rgba(74,86,56,0.4), transparent)" }} />
                   </div>
 
                   {/* Star Rating */}
@@ -166,7 +166,7 @@ export default function FeedbackModal({ isOpen, onClose, complaintsWhatsapp }: P
                           onClick={() => setRating(star)}
                           className="w-10 h-10 flex items-center justify-center transition-all duration-200"
                           style={{
-                            color: rating >= star ? "#C9973A" : "var(--border-color)",
+                            color: rating >= star ? "#556B43" : "var(--border-color)",
                           }}
                         >
                           <FiStar
@@ -263,21 +263,21 @@ export default function FeedbackModal({ isOpen, onClose, complaintsWhatsapp }: P
                     className="w-full py-3.5 rounded-2xl font-black text-base tracking-wide flex items-center justify-center gap-3 group transition-all duration-300"
                     style={{
                       background: isValid
-                        ? "linear-gradient(135deg, #E8BE5C 0%, #C9973A 60%, #9A6D18 100%)"
+                        ? "linear-gradient(135deg, #6B8457 0%, #4A5638 60%, #353E27 100%)"
                         : "var(--bg-surface)",
                       color: isValid ? "white" : "var(--text-muted)",
-                      boxShadow: isValid ? "0 6px 24px rgba(201,151,58,0.4)" : "none",
+                      boxShadow: isValid ? "0 6px 24px rgba(74,86,56,0.35)" : "none",
                       border: isValid ? "none" : "1px solid var(--border-color)",
                       cursor: isValid ? "pointer" : "not-allowed",
                     }}
                     onMouseEnter={(e) => {
                       if (!isValid) return;
                       (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                      (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 32px rgba(201,151,58,0.5)";
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 10px 32px rgba(74,86,56,0.45)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
-                      (e.currentTarget as HTMLButtonElement).style.boxShadow = isValid ? "0 6px 24px rgba(201,151,58,0.4)" : "none";
+                      (e.currentTarget as HTMLButtonElement).style.boxShadow = isValid ? "0 6px 24px rgba(74,86,56,0.35)" : "none";
                     }}
                   >
                     <span>{t("common.send")}</span>

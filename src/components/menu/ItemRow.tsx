@@ -41,8 +41,8 @@ const ItemRow = React.memo(({ item, categoryName }: Props) => {
         onMouseEnter={(e) => {
           if (unavailable) return;
           const el = e.currentTarget as HTMLDivElement;
-          el.style.borderColor = "rgba(201,151,58,0.38)";
-          el.style.boxShadow = "0 8px 32px rgba(201,151,58,0.14)";
+          el.style.borderColor = "rgba(74,86,56,0.35)";
+          el.style.boxShadow = "0 8px 32px rgba(74,86,56,0.14)";
           el.style.background = "var(--bg-card-hover)";
         }}
         onMouseLeave={(e) => {
@@ -52,13 +52,9 @@ const ItemRow = React.memo(({ item, categoryName }: Props) => {
           el.style.background = "var(--bg-card)";
         }}
       >
-        {/* Burgundy hover border */}
+        {/* Olive/Mocha hover border */}
         <div
-          className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-t-2xl"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(122,23,51,0.5) 30%, rgba(192,48,96,0.8) 50%, rgba(122,23,51,0.5) 70%, transparent)",
-          }}
+          className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-t-2xl bg-gradient-to-r from-transparent via-olive-500 to-mocha-500"
         />
 
         {/* ─── Image ─── */}
@@ -100,8 +96,8 @@ const ItemRow = React.memo(({ item, categoryName }: Props) => {
                 {item.star && (
                   <FiStar
                     size={14}
-                    fill="#7A1733"
-                    stroke="#7A1733"
+                    fill="#816148"
+                    stroke="#816148"
                     className="shrink-0"
                   />
                 )}

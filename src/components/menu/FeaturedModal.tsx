@@ -76,12 +76,12 @@ export default function FeaturedModal({
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* ── Top gold-to-burgundy accent bar ── */}
+            {/* ── Top Olive-to-Mocha accent bar ── */}
             <div
               className="absolute top-0 left-0 right-0 h-[2.5px] z-20"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent 0%, rgba(232,190,92,0.7) 20%, #C9973A 40%, #C03060 60%, #7A1733 80%, transparent 100%)",
+                  "linear-gradient(90deg, transparent 0%, rgba(107,132,87,0.7) 20%, #556B43 40%, #8FA87E 55%, #B79275 75%, transparent 100%)",
               }}
             />
 

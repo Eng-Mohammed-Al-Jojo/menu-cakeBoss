@@ -114,7 +114,7 @@ const SortableItem: React.FC<{
 
             {item.star && (
               <FiStar
-                className="text-yellow-400 fill-yellow-400 shrink-0"
+                className="text-secondary fill-secondary shrink-0"
                 size={14}
               />
             )}
@@ -147,7 +147,7 @@ const SortableItem: React.FC<{
         <button
           onClick={() => toggleItem(item.id, item.visible)}
           className={`relative shrink-0 w-12 h-6 rounded-full flex items-center p-1 transition-all duration-300 border ${item.visible
-            ? "bg-green-500 border-green-500 shadow-[0_0_12px_rgba(34,197,94,0.3)]"
+            ? "bg-primary border-primary shadow-[0_0_12px_rgba(74,86,56,0.3)]"
             : "bg-(--bg-main) border-(--border-color)"
             }`}
           style={{
@@ -171,8 +171,8 @@ const SortableItem: React.FC<{
               await update(ref(db, `items/${item.id}`), { star: newStar });
             }}
             className={`w-8 h-8 flex items-center justify-center rounded-lg transition-all ${item.star
-              ? "bg-yellow-100 text-yellow-600"
-              : "hover:bg-yellow-50 text-(--text-muted)"
+              ? "bg-secondary/20 text-secondary"
+              : "hover:bg-secondary/10 text-(--text-muted)"
               }`}
           >
             <FiStar size={16} fill={item.star ? "currentColor" : "none"} />

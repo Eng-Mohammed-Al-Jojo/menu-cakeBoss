@@ -98,12 +98,12 @@ export default function FancyFixedLoading({
           className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
           style={{ background: "var(--bg-page)" }}
         >
-          {/* Warm radial background */}
+          {/* Warm Olive radial background */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(201,151,58,0.08) 0%, rgba(122,23,51,0.02) 50%, transparent 75%)",
+                "radial-gradient(ellipse at center, rgba(74,86,56,0.08) 0%, rgba(183,146,117,0.03) 50%, transparent 75%)",
             }}
           />
 
@@ -112,7 +112,7 @@ export default function FancyFixedLoading({
             className="absolute inset-0 pointer-events-none opacity-20"
             style={{
               backgroundImage:
-                "radial-gradient(circle, rgba(201,151,58,0.4) 1px, transparent 1px)",
+                "radial-gradient(circle, rgba(74,86,56,0.4) 1px, transparent 1px)",
               backgroundSize: "32px 32px",
             }}
           />
@@ -125,7 +125,7 @@ export default function FancyFixedLoading({
               style={{
                 width: "200px",
                 height: "200px",
-                borderColor: "rgba(201,151,58,0.12)",
+                borderColor: "rgba(74,86,56,0.12)",
               }}
               animate={{ rotate: 360 }}
               transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
@@ -137,7 +137,7 @@ export default function FancyFixedLoading({
               style={{
                 width: "164px",
                 height: "164px",
-                borderColor: "rgba(201,151,58,0.20)",
+                borderColor: "rgba(74,86,56,0.20)",
               }}
               animate={{ rotate: -360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -153,7 +153,7 @@ export default function FancyFixedLoading({
                 cx="74"
                 cy="74"
                 r="68"
-                stroke="rgba(201,151,58,0.08)"
+                stroke="rgba(74,86,56,0.08)"
                 strokeWidth="1.5"
                 fill="none"
               />
@@ -161,7 +161,7 @@ export default function FancyFixedLoading({
                 cx="74"
                 cy="74"
                 r="68"
-                stroke="url(#goldGradient)"
+                stroke="url(#oliveGradient)"
                 strokeWidth="2.5"
                 fill="none"
                 strokeLinecap="round"
@@ -171,10 +171,10 @@ export default function FancyFixedLoading({
                 style={{ transformOrigin: "74px 74px" }}
               />
               <defs>
-                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#E8BE5C" />
-                  <stop offset="50%" stopColor="#C9973A" />
-                  <stop offset="100%" stopColor="#9A6D18" />
+                <linearGradient id="oliveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#6B8457" />
+                  <stop offset="50%" stopColor="#4A5638" />
+                  <stop offset="100%" stopColor="#B79275" />
                 </linearGradient>
               </defs>
             </svg>
@@ -185,8 +185,8 @@ export default function FancyFixedLoading({
               style={{
                 width: "110px",
                 height: "110px",
-                background: "linear-gradient(145deg, #E8BE5C, #C9973A, #9A6D18)",
-                boxShadow: "0 6px 32px rgba(201,151,58,0.45)",
+                background: "linear-gradient(145deg, #6B8457, #4A5638, #B79275)",
+                boxShadow: "0 6px 32px rgba(74,86,56,0.40)",
               }}
               animate={{ scale: [0.97, 1.03, 0.97] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -210,7 +210,7 @@ export default function FancyFixedLoading({
               <motion.span
                 key={i}
                 className="w-2.5 h-2.5 rounded-full"
-                style={{ background: "linear-gradient(135deg, #E8BE5C, #C9973A)" }}
+                style={{ background: "linear-gradient(135deg, #6B8457, #4A5638)" }}
                 animate={{ y: [0, -8, 0], opacity: [0.4, 1, 0.4] }}
                 transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.2 }}
               />
@@ -236,7 +236,7 @@ export default function FancyFixedLoading({
               className="h-full rounded-full"
               style={{
                 width: barWidth,
-                background: "linear-gradient(90deg, #E8BE5C, #C9973A)",
+                background: "linear-gradient(90deg, #6B8457, #B79275)",
               }}
             />
           </div>

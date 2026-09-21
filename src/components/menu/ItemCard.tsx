@@ -30,52 +30,28 @@ export default function ItemCard({ item, index, categoryName, className }: Props
           duration: 0.55,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className={`relative group flex flex-col overflow-hidden rounded-2xl ${className ?? "mb-20"} transition-all duration-500 ${
-          unavailable ? "opacity-60 grayscale-[0.7]" : "cursor-pointer"
+        className={`relative group flex flex-col overflow-hidden rounded-2xl ${className ?? "mb-20"} transition-all duration-400 bg-white border border-(--border-color) shadow-(--shadow-soft) ${
+          unavailable ? "opacity-60 grayscale-[0.7]" : "cursor-pointer hover:border-olive-500/40 hover:shadow-[0_10px_36px_-6px_rgba(74,86,56,0.16),0_4px_16px_-2px_rgba(183,146,117,0.1)] hover:-translate-y-1"
         }`}
-        style={{
-          background: "var(--bg-card)",
-          border: "1px solid var(--border-color)",
-          boxShadow: "var(--shadow-soft)",
-        }}
         onClick={() => {
           if (!unavailable) setIsDetailModalOpen(true);
         }}
-        onMouseEnter={(e) => {
-          if (unavailable) return;
-          const el = e.currentTarget as HTMLDivElement;
-          el.style.borderColor = "rgba(122,23,51,0.28)";
-          el.style.boxShadow =
-            "0 10px 36px -6px rgba(122,23,51,0.16), 0 4px 16px -2px rgba(201,151,58,0.1)";
-          el.style.transform = "translateY(-5px)";
-        }}
-        onMouseLeave={(e) => {
-          const el = e.currentTarget as HTMLDivElement;
-          el.style.borderColor = "var(--border-color)";
-          el.style.boxShadow = "var(--shadow-soft)";
-          el.style.transform = "translateY(0)";
-        }}
       >
-        {/* Burgundy top border reveal on hover */}
+        {/* Olive/Mocha top border reveal on hover */}
         <div
-          className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(122,23,51,0.5) 30%, rgba(192,48,96,0.8) 50%, rgba(122,23,51,0.5) 70%, transparent)",
-          }}
+          className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 bg-gradient-to-r from-transparent via-olive-500 to-mocha-500"
         />
 
-        {/* Burgundy Star Badge */}
+        {/* Mocha Star Badge */}
         {item.star && (
-          <div className="star-badge-burgundy">
+          <div className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-gradient-to-br from-mocha-400 to-mocha-600 flex items-center justify-center shadow-md z-10">
             <FiStar size={11} fill="white" stroke="white" />
           </div>
         )}
 
         {/* ─── Image ─── */}
         <div
-          className="relative aspect-square overflow-hidden"
-          style={{ background: "var(--bg-surface)" }}
+          className="relative aspect-square overflow-hidden bg-(--bg-surface)"
         >
           <img
             src={imageSrc}
@@ -89,20 +65,15 @@ export default function ItemCard({ item, index, categoryName, className }: Props
             }}
           />
 
-          {/* Hover shimmer — burgundy tint */}
+          {/* Hover shimmer */}
           <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(115deg, transparent 25%, rgba(122,23,51,0.08) 50%, transparent 75%)",
-            }}
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none bg-gradient-to-tr from-transparent via-olive-500/10 to-transparent"
           />
 
           {/* Unavailable */}
           {unavailable && (
             <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{ background: "rgba(253,249,240,0.7)", backdropFilter: "blur(2px)" }}
+              className="absolute inset-0 flex items-center justify-center bg-cream-100/70 backdrop-blur-[2px]"
             >
               <span className="unavailable-badge">غير متوفر</span>
             </div>
@@ -113,8 +84,7 @@ export default function ItemCard({ item, index, categoryName, className }: Props
         <div className="flex flex-col items-center text-center gap-2 p-3.5 flex-1">
           {/* Name */}
           <h4
-            className="text-sm font-black leading-snug line-clamp-2 w-full"
-            style={{ color: unavailable ? "var(--text-muted)" : "var(--text-main)" }}
+            className={`text-sm font-black leading-snug line-clamp-2 w-full ${unavailable ? "text-(--text-muted)" : "text-(--text-main)"}`}
           >
             {itemName}
           </h4>
@@ -122,39 +92,34 @@ export default function ItemCard({ item, index, categoryName, className }: Props
           {/* Ingredients */}
           {itemIngredients && (
             <p
-              className="text-[10px] md:text-xs leading-relaxed line-clamp-2"
-              style={{ color: "var(--text-muted)", fontWeight: 500 }}
+              className="text-[10px] md:text-xs leading-relaxed line-clamp-2 text-(--text-muted) font-medium"
             >
               {itemIngredients}
             </p>
           )}
 
-          {/* Price — stays gold (brand identity) */}
+          {/* Price — Olive/Mocha tag */}
           <div className="flex flex-wrap items-center justify-center gap-1.5 mt-auto pt-1">
             {prices.map((p, idx) => (
               <div
                 key={idx}
-                className="inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full"
-                style={{
-                  background: unavailable
-                    ? "var(--bg-surface)"
-                    : "linear-gradient(135deg, rgba(201,151,58,0.12), rgba(201,151,58,0.06))",
-                  border: `1px solid ${unavailable ? "var(--border-color)" : "rgba(201,151,58,0.3)"}`,
-                }}
+                className={`inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full ${
+                  unavailable
+                    ? "bg-(--bg-surface) border border-(--border-color)"
+                    : "bg-olive-50 border border-olive-200/80 shadow-xs"
+                }`}
               >
                 <span
-                  className="text-sm font-black"
-                  style={{
-                    color: unavailable ? "var(--text-muted)" : "var(--color-primary-dark)",
-                  }}
+                  className={`text-sm font-black ${
+                    unavailable ? "text-(--text-muted)" : "text-olive-900"
+                  }`}
                 >
                   {p.trim()}
                 </span>
                 <span
-                  className="text-xs font-bold"
-                  style={{
-                    color: unavailable ? "var(--text-muted)" : "var(--color-primary)",
-                  }}
+                  className={`text-xs font-bold ${
+                    unavailable ? "text-(--text-muted)" : "text-olive-600"
+                  }`}
                 >
                   ₪
                 </span>

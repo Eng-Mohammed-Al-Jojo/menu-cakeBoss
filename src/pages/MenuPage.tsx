@@ -41,7 +41,7 @@ export default function MenuPage() {
   return (
     <div
       className="min-h-screen flex flex-col relative"
-      style={{ background: "var(--bg-page)" }}>
+      style={{ background: "#E8EDDF" }}>
 
 
       {/* Loading Screen */}
@@ -120,7 +120,7 @@ export default function MenuPage() {
       <header className="relative w-full overflow-hidden pt-12 pb-16 px-4 md:pt-16 md:pb-20">
 
         {/* Layered Luxury Backgrounds & Glows */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-(--color-cream-100) via-(--color-cream-200) to-(--color-cream-300) opacity-90" />
+        <div className="absolute inset-0 -z-10" style={{ background: "linear-gradient(to bottom, #b7ec7aff, #C8D9B8, #B8CCAA)", opacity: 0.92 }} />
 
         {/* Cohesive background ornament pattern (tying with the footer) */}
         <div
@@ -166,7 +166,7 @@ export default function MenuPage() {
             <div
               className="relative w-40 h-40 md:w-56 md:h-56 rounded-full p-[3px] shadow-2xl transition-transform duration-500 hover:scale-105 animate-logo-float"
               style={{
-                background: "linear-gradient(135deg, #6B8457 0%, #435435 50%, #B79275 100%)",
+                background: "linear-gradient(135deg, #C8D9B8 0%, #AABF96 50%, #D9CCBA 100%)",
                 boxShadow: "var(--shadow-premium), 0 0 0 1px rgba(255,255,255,0.6)",
               }}
             >

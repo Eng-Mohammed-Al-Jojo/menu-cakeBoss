@@ -70,7 +70,7 @@ export default function CategoryItemsPage() {
   return (
     <div
       className="min-h-screen flex flex-col"
-
+      style={{ background: "#E8EDDF" }}
     >
       {/* ═══ Back-Navigation Loading Overlay ═══ */}
       <AnimatePresence>
@@ -82,7 +82,7 @@ export default function CategoryItemsPage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="fixed inset-0 z-[9999] flex flex-col items-center justify-center select-none"
-            style={{ background: "var(--bg-page)", pointerEvents: "all" }}
+            style={{ background: "#E8EDDF", pointerEvents: "all" }}
           >
             {/* Warm radial background */}
             <div

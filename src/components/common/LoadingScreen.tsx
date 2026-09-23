@@ -96,7 +96,7 @@ export default function FancyFixedLoading({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35, ease: "easeInOut" }}
           className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
-          style={{ background: "var(--bg-page)" }}
+          style={{ background: "#E8EDDF" }}
         >
           {/* Warm Olive radial background */}
           <div
@@ -185,7 +185,7 @@ export default function FancyFixedLoading({
               style={{
                 width: "110px",
                 height: "110px",
-                background: "linear-gradient(145deg, #6B8457, #4A5638, #B79275)",
+                background: "linear-gradient(145deg, #C8D9B8, #AABF96, #D9CCBA)",
                 boxShadow: "0 6px 32px rgba(74,86,56,0.40)",
               }}
               animate={{ scale: [0.97, 1.03, 0.97] }}

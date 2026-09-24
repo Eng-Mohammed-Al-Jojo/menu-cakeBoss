@@ -214,7 +214,8 @@ function WorkingHoursCard({ title, days, hours, note, index }: WorkingHoursCardP
           </div>
           <span
             className="text-[13px] font-black leading-snug tracking-wide"
-            style={{ color: "#343528", direction: "ltr" }}
+            dir="auto"
+            style={{ color: "#343528" }}
           >
             {hours}
           </span>

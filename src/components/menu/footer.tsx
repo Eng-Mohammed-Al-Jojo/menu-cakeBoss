@@ -40,21 +40,21 @@ function BranchCard({ name, address, phone, whatsapp, index }: BranchCardProps) 
       transition={{ duration: 0.45, delay: 0.08 + index * 0.08 }}
       className="flex flex-col gap-3.5 p-5 rounded-2xl transition-all duration-300 hover:shadow-md"
       style={{
-        background: "rgba(255, 255, 255, 0.88)",
-        border: "1px solid rgba(107, 132, 87, 0.20)",
-        boxShadow: "0 4px 20px -3px rgba(60, 75, 45, 0.07)",
+        background: "rgba(255, 255, 255, 0.82)",
+        border: "1px solid rgba(110, 112, 72, 0.20)",
+        boxShadow: "0 4px 20px -3px rgba(74, 75, 50, 0.08)",
         backdropFilter: "blur(12px)",
       }}
     >
       {/* Branch header */}
       <div
         className="flex items-center gap-2.5 pb-3"
-        style={{ borderBottom: "1px solid rgba(107, 132, 87, 0.14)" }}
+        style={{ borderBottom: "1px solid rgba(110, 112, 72, 0.14)" }}
       >
         <div
           className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
           style={{
-            background: "linear-gradient(135deg, #5A7047, #3D4E2E)",
+            background: "linear-gradient(135deg, #9EA06B, #5E603F)",
             color: "#FFFFFF",
           }}
         >
@@ -62,7 +62,7 @@ function BranchCard({ name, address, phone, whatsapp, index }: BranchCardProps) 
         </div>
         <span
           className="text-sm font-black tracking-wide"
-          style={{ color: "#26331C" }}
+          style={{ color: "#343528" }}
         >
           {name}
         </span>
@@ -74,15 +74,15 @@ function BranchCard({ name, address, phone, whatsapp, index }: BranchCardProps) 
           <div
             className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center mt-0.5"
             style={{
-              background: "rgba(107, 132, 87, 0.12)",
-              color: "#4A5F38",
+              background: "rgba(158, 160, 107, 0.16)",
+              color: "#6E7048",
             }}
           >
             <FaMapMarkerAlt size={12} />
           </div>
           <span
             className="text-[13px] font-semibold leading-snug"
-            style={{ color: "#384729" }}
+            style={{ color: "#55563D" }}
           >
             {address}
           </span>
@@ -99,15 +99,15 @@ function BranchCard({ name, address, phone, whatsapp, index }: BranchCardProps) 
             <div
               className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center"
               style={{
-                background: "rgba(107, 132, 87, 0.12)",
-                color: "#4A5F38",
+                background: "rgba(158, 160, 107, 0.16)",
+                color: "#6E7048",
               }}
             >
               <FaPhoneAlt size={11} />
             </div>
             <span
               className="text-[13px] font-bold truncate"
-              style={{ color: "#384729", direction: "ltr" }}
+              style={{ color: "#55563D", direction: "ltr" }}
             >
               {phone}
             </span>
@@ -153,21 +153,21 @@ function WorkingHoursCard({ title, days, hours, note, index }: WorkingHoursCardP
       transition={{ duration: 0.45, delay: 0.08 + index * 0.08 }}
       className="flex flex-col gap-3.5 p-5 rounded-2xl transition-all duration-300 hover:shadow-md"
       style={{
-        background: "rgba(255, 255, 255, 0.88)",
-        border: "1px solid rgba(107, 132, 87, 0.20)",
-        boxShadow: "0 4px 20px -3px rgba(60, 75, 45, 0.07)",
+        background: "rgba(255, 255, 255, 0.82)",
+        border: "1px solid rgba(110, 112, 72, 0.20)",
+        boxShadow: "0 4px 20px -3px rgba(74, 75, 50, 0.08)",
         backdropFilter: "blur(12px)",
       }}
     >
       {/* Header */}
       <div
         className="flex items-center gap-2.5 pb-3"
-        style={{ borderBottom: "1px solid rgba(107, 132, 87, 0.14)" }}
+        style={{ borderBottom: "1px solid rgba(110, 112, 72, 0.14)" }}
       >
         <div
           className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-xs"
           style={{
-            background: "linear-gradient(135deg, #5A7047, #3D4E2E)",
+            background: "linear-gradient(135deg, #9EA06B, #5E603F)",
             color: "#FFFFFF",
           }}
         >
@@ -175,7 +175,7 @@ function WorkingHoursCard({ title, days, hours, note, index }: WorkingHoursCardP
         </div>
         <span
           className="text-sm font-black tracking-wide"
-          style={{ color: "#26331C" }}
+          style={{ color: "#343528" }}
         >
           {title}
         </span>
@@ -187,15 +187,15 @@ function WorkingHoursCard({ title, days, hours, note, index }: WorkingHoursCardP
           <div
             className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center"
             style={{
-              background: "rgba(107, 132, 87, 0.12)",
-              color: "#4A5F38",
+              background: "rgba(158, 160, 107, 0.16)",
+              color: "#6E7048",
             }}
           >
             <FiCalendar size={12} />
           </div>
           <span
             className="text-[13px] font-bold leading-snug"
-            style={{ color: "#384729" }}
+            style={{ color: "#55563D" }}
           >
             {days}
           </span>
@@ -208,15 +208,15 @@ function WorkingHoursCard({ title, days, hours, note, index }: WorkingHoursCardP
           <div
             className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center"
             style={{
-              background: "rgba(107, 132, 87, 0.12)",
-              color: "#4A5F38",
+              background: "rgba(158, 160, 107, 0.16)",
+              color: "#6E7048",
             }}
           >
             <FiClock size={12} />
           </div>
           <span
             className="text-[13px] font-black leading-snug tracking-wide"
-            style={{ color: "#26331C", direction: "ltr" }}
+            style={{ color: "#343528", direction: "ltr" }}
           >
             {hours}
           </span>
@@ -228,12 +228,12 @@ function WorkingHoursCard({ title, days, hours, note, index }: WorkingHoursCardP
         <div
           className="mt-0.5 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2"
           style={{
-            background: "rgba(107, 132, 87, 0.08)",
-            color: "#3F522E",
-            border: "1px dashed rgba(107, 132, 87, 0.22)",
+            background: "rgba(158, 160, 107, 0.10)",
+            color: "#55563D",
+            border: "1px dashed rgba(110, 112, 72, 0.22)",
           }}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#5A7047] shrink-0" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#7D8053] shrink-0" />
           <span className="leading-tight">{note}</span>
         </div>
       )}
@@ -249,14 +249,14 @@ function SectionBadge({ text }: { text: string }) {
         className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest shadow-xs"
         style={{
           background: "rgba(255, 255, 255, 0.72)",
-          border: "1px solid rgba(107, 132, 87, 0.22)",
-          color: "#384A28",
+          border: "1px solid rgba(110, 112, 72, 0.22)",
+          color: "#55563D",
           backdropFilter: "blur(8px)",
         }}
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#5A7047]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#7D8053]" />
         {text}
-        <span className="w-1.5 h-1.5 rounded-full bg-[#5A7047]" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#7D8053]" />
       </span>
     </div>
   );
@@ -399,9 +399,9 @@ export default function Footer() {
         className="relative w-full rounded-t-[2.5rem] sm:rounded-t-[3.5rem] md:rounded-t-[4.5rem] overflow-hidden"
         style={{
           background:
-            "linear-gradient(180deg, #E2ECD8 0%, #D6E3CB 35%, #C9DBBD 70%, #BCCFB0 100%)",
+            "linear-gradient(180deg, #E9E9D2 0%, #D9D9B6 35%, #C7C795 70%, #B2B47D 100%)",
           boxShadow:
-            "0 -16px 40px -12px rgba(60, 75, 45, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)",
+            "0 -16px 40px -12px rgba(74, 75, 50, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.8)",
           borderTop: "1px solid rgba(255, 255, 255, 0.8)",
         }}
       >
@@ -410,7 +410,7 @@ export default function Footer() {
           className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full pointer-events-none opacity-40 blur-3xl"
           style={{
             background:
-              "radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(183, 206, 172, 0.4) 60%, transparent 80%)",
+              "radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(217, 217, 182, 0.5) 60%, transparent 80%)",
           }}
         />
 
@@ -430,7 +430,7 @@ export default function Footer() {
             <div className="relative group">
               <div
                 className="absolute inset-0 blur-2xl rounded-full opacity-30 group-hover:opacity-45 transition-opacity duration-700"
-                style={{ background: "rgba(107, 132, 87, 0.5)" }}
+                style={{ background: "rgba(158, 160, 107, 0.5)" }}
               />
               <img
                 src="/logo.png"
@@ -440,7 +440,7 @@ export default function Footer() {
             </div>
             <h2
               className="text-2xl font-black tracking-widest uppercase"
-              style={{ color: "#26331C", textShadow: "0 2px 10px rgba(60, 75, 45, 0.15)" }}
+              style={{ color: "#343528", textShadow: "0 2px 10px rgba(74, 75, 50, 0.15)" }}
             >
               CakeBoss
             </h2>
@@ -450,18 +450,18 @@ export default function Footer() {
                 className="flex-1 h-px"
                 style={{
                   background:
-                    "linear-gradient(90deg, transparent, rgba(74, 95, 56, 0.5))",
+                    "linear-gradient(90deg, transparent, rgba(110, 112, 72, 0.5))",
                 }}
               />
               <div
                 className="w-1.5 h-1.5 rounded-full"
-                style={{ background: "#5A7047", boxShadow: "0 0 6px rgba(74, 95, 56, 0.4)" }}
+                style={{ background: "#7D8053", boxShadow: "0 0 6px rgba(110, 112, 72, 0.4)" }}
               />
               <div
                 className="flex-1 h-px"
                 style={{
                   background:
-                    "linear-gradient(90deg, rgba(74, 95, 56, 0.5), transparent)",
+                    "linear-gradient(90deg, rgba(110, 112, 72, 0.5), transparent)",
                 }}
               />
             </div>

@@ -6,51 +6,49 @@
 /* 
    CAKE BOSS Modern Patisserie Brand Design System
    Brand Colors extracted from the Brand Identity PDF:
-   - Pantone P 164-11 C (Olive Green / Matcha Moss): Primary
-   - Pantone P 29-9 C (Caramel Mocha / Kraft Taupe): Accent
-   - Pantone P 14-1 C (Warm Vanilla Cream / Ivory): Background & Surface
-   - Pantone P 157-1 C (Soft Sage / Pistachio Mist): Secondary Tint
-   - Pantone P 151-1 C (Pale Celadon): Border & Highlight
+  - Cake Boss Sage: the muted green pulled from the logo background
+  - Dusty Rose: the warm pink-brown pulled from the BOSS wordmark
+  - Vanilla Cream: a soft editorial canvas that keeps the logo visible
 */
 @theme {
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Cairo', 'Almarai', sans-serif;
 
   /* ── Olive Green Brand Colors (Pantone P 164-11 C) ── */
-  --color-olive-50: #F5F7F2;
-  --color-olive-100: #E7ECE1;
-  --color-olive-200: #D0DBC6;
-  --color-olive-300: #B2C4A4;
-  --color-olive-400: #8FA87E;
-  --color-olive-500: #6B8457;
-  --color-olive-600: #556B43;
-  --color-olive-700: #435435;
-  --color-olive-800: #334028;
-  --color-olive-900: #222B1B;
+  --color-olive-50: #F5F5E9;
+  --color-olive-100: #E9E9D2;
+  --color-olive-200: #D9D9B6;
+  --color-olive-300: #C7C795;
+  --color-olive-400: #B2B47D;
+  --color-olive-500: #9EA06B;
+  --color-olive-600: #7D8053;
+  --color-olive-700: #5E603F;
+  --color-olive-800: #45472F;
+  --color-olive-900: #343528;
 
   /* ── Caramel Mocha / Kraft Taupe (Pantone P 29-9 C) ── */
-  --color-mocha-50: #FAF6F1;
-  --color-mocha-100: #F3EAE0;
-  --color-mocha-200: #E6D2C0;
-  --color-mocha-300: #D5B69C;
-  --color-mocha-400: #C29B7A;
-  --color-mocha-500: #B79275;
-  --color-mocha-600: #9E7A5E;
-  --color-mocha-700: #816148;
-  --color-mocha-800: #644935;
-  --color-mocha-900: #463224;
+  --color-mocha-50: #FBF4F0;
+  --color-mocha-100: #F3E3DD;
+  --color-mocha-200: #E8CCC2;
+  --color-mocha-300: #D7B2A5;
+  --color-mocha-400: #C89C8D;
+  --color-mocha-500: #B88978;
+  --color-mocha-600: #986858;
+  --color-mocha-700: #754A42;
+  --color-mocha-800: #5B3935;
+  --color-mocha-900: #49332F;
 
   /* ── Warm Vanilla Cream / Ivory (Pantone P 14-1 C) ── */
   --color-cream-50: #FFFFFF;
-  --color-cream-100: #FAF7F2;
-  --color-cream-200: #F5EFE6;
-  --color-cream-300: #EFE7DA;
-  --color-cream-400: #E4D7C3;
-  --color-cream-500: #D5C5AC;
-  --color-cream-600: #BEAE94;
-  --color-cream-700: #A3937A;
-  --color-cream-800: #857660;
-  --color-cream-900: #655845;
+  --color-cream-100: #FBF8F0;
+  --color-cream-200: #F4F0E2;
+  --color-cream-300: #EAE5D2;
+  --color-cream-400: #D9D2B9;
+  --color-cream-500: #C7BE9F;
+  --color-cream-600: #AEA582;
+  --color-cream-700: #928865;
+  --color-cream-800: #756C50;
+  --color-cream-900: #5A523D;
 
   /* ── Deep Espresso Olive (Text & High Contrast) ── */
   --color-charcoal-50: #F7F8F6;
@@ -88,35 +86,35 @@
   --color-burgundy-900: #463224;
 
   /* Semantic Color Aliases */
-  --color-primary: #4A5638;
-  --color-primary-light: #6B7B53;
-  --color-primary-dark: #353E27;
-  --color-primary-hover: #3E492F;
+  --color-primary: #6E7048;
+  --color-primary-light: #9EA06B;
+  --color-primary-dark: #4A4B32;
+  --color-primary-hover: #5E603F;
 
-  --color-accent: #B79275;
-  --color-accent-light: #CBAA8F;
-  --color-accent-dark: #8E684B;
+  --color-accent: #B88978;
+  --color-accent-light: #D7B2A5;
+  --color-accent-dark: #754A42;
 
   --color-success: #3A6946;
   --color-warning: #C28B36;
   --color-error: #A63838;
 
   /* Premium Shadows */
-  --shadow-soft: 0 2px 16px -4px rgba(74, 86, 56, 0.10);
-  --shadow-card: 0 4px 24px -6px rgba(74, 86, 56, 0.14);
-  --shadow-premium: 0 8px 40px -12px rgba(74, 86, 56, 0.22);
-  --shadow-premium-hover: 0 16px 56px -16px rgba(74, 86, 56, 0.30);
-  --shadow-gold: 0 4px 20px -4px rgba(74, 86, 56, 0.30);
-  --shadow-burgundy: 0 4px 20px -4px rgba(183, 146, 117, 0.32);
-  --shadow-burgundy-strong: 0 8px 32px -4px rgba(183, 146, 117, 0.45);
-  --shadow-burgundy-glow: 0 0 0 0 rgba(183, 146, 117, 0);
+  --shadow-soft: 0 2px 16px -4px rgba(74, 75, 50, 0.10);
+  --shadow-card: 0 4px 24px -6px rgba(74, 75, 50, 0.14);
+  --shadow-premium: 0 8px 40px -12px rgba(74, 75, 50, 0.22);
+  --shadow-premium-hover: 0 16px 56px -16px rgba(74, 75, 50, 0.28);
+  --shadow-gold: 0 4px 20px -4px rgba(110, 112, 72, 0.30);
+  --shadow-burgundy: 0 4px 20px -4px rgba(184, 137, 120, 0.32);
+  --shadow-burgundy-strong: 0 8px 32px -4px rgba(184, 137, 120, 0.42);
+  --shadow-burgundy-glow: 0 0 0 0 rgba(184, 137, 120, 0);
 
   /* FAB (Floating Action Button) */
   --fab-size: 56px;
   --fab-size-lg: 60px;
-  --fab-bg: linear-gradient(135deg, #5A6944 0%, #3D482E 100%);
-  --fab-shadow: 0 8px 32px -4px rgba(61, 72, 46, 0.50), 0 2px 8px rgba(61, 72, 46, 0.3);
-  --fab-shadow-hover: 0 16px 48px -4px rgba(61, 72, 46, 0.65), 0 4px 12px rgba(61, 72, 46, 0.35);
+  --fab-bg: linear-gradient(135deg, #7D8053 0%, #4A4B32 100%);
+  --fab-shadow: 0 8px 32px -4px rgba(74, 75, 50, 0.50), 0 2px 8px rgba(74, 75, 50, 0.3);
+  --fab-shadow-hover: 0 16px 48px -4px rgba(74, 75, 50, 0.60), 0 4px 12px rgba(74, 75, 50, 0.35);
 }
 
 /* 
@@ -124,43 +122,43 @@
 */
 :root {
   /* Backgrounds */
-  --bg-main: #FAF7F2;
-  --bg-page: #F5EFE6;
+  --bg-main: #FBF8F0;
+  --bg-page: #F1EFE1;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #FAF7F2;
-  --bg-surface: #E7ECE1;
-  --bg-muted: #DDE7D6;
+  --bg-card-hover: #FBF8F0;
+  --bg-surface: #E9E9D2;
+  --bg-muted: #D9D9B6;
 
   /* Text */
-  --text-main: #232A1E;
-  --text-primary: #232A1E;
-  --text-secondary: #56614C;
-  --text-muted: #8E9884;
-  --text-gold: #4A5638;
-  --text-burgundy: #B79275;
+  --text-main: #343528;
+  --text-primary: #343528;
+  --text-secondary: #696A4E;
+  --text-muted: #969579;
+  --text-gold: #6E7048;
+  --text-burgundy: #B88978;
 
   /* Borders */
-  --border-color: #E2DACB;
-  --border-gold: rgba(74, 86, 56, 0.28);
-  --border-gold-heavy: rgba(74, 86, 56, 0.55);
-  --border-burgundy: rgba(183, 146, 117, 0.35);
-  --border-light: rgba(74, 86, 56, 0.15);
+  --border-color: #E2DFC9;
+  --border-gold: rgba(110, 112, 72, 0.28);
+  --border-gold-heavy: rgba(110, 112, 72, 0.55);
+  --border-burgundy: rgba(184, 137, 120, 0.35);
+  --border-light: rgba(110, 112, 72, 0.15);
 
   /* Gradients */
-  --gradient-gold: linear-gradient(135deg, #6B7B53 0%, #4A5638 60%, #353E27 100%);
-  --gradient-gold-soft: linear-gradient(135deg, #FAF7F2 0%, #E7ECE1 100%);
-  --gradient-burgundy: linear-gradient(135deg, #CBAA8F 0%, #B79275 60%, #9E7A5E 100%);
-  --gradient-bg: linear-gradient(160deg, #FAF7F2 0%, #F5EFE6 40%, #EFE7DA 100%);
-  --gradient-hero: linear-gradient(180deg, rgba(250, 247, 242, 0) 0%, rgba(245, 239, 230, 0.7) 50%, #F5EFE6 100%);
+  --gradient-gold: linear-gradient(135deg, #B2B47D 0%, #6E7048 60%, #4A4B32 100%);
+  --gradient-gold-soft: linear-gradient(135deg, #FBF8F0 0%, #E9E9D2 100%);
+  --gradient-burgundy: linear-gradient(135deg, #D7B2A5 0%, #B88978 60%, #754A42 100%);
+  --gradient-bg: linear-gradient(160deg, #FBF8F0 0%, #F1EFE1 40%, #EAE5D2 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(251, 248, 240, 0) 0%, rgba(241, 239, 225, 0.7) 50%, #F1EFE1 100%);
 
   /* ── Brand Aliases (used in modals & cards) ── */
-  --brand-gold: #4A5638;
-  --brand-gold-light: #6B7B53;
-  --brand-gold-dark: #353E27;
-  --brand-dark: #232A1E;
-  --brand-red: #B79275;
-  --brand-red-light: #CBAA8F;
-  --brand-red-dark: #8E684B;
+  --brand-gold: #6E7048;
+  --brand-gold-light: #9EA06B;
+  --brand-gold-dark: #4A4B32;
+  --brand-dark: #343528;
+  --brand-red: #B88978;
+  --brand-red-light: #D7B2A5;
+  --brand-red-dark: #754A42;
 
   /* ── Alpha / Semi-transparent overlays ── */
   --dark-a85: rgba(25, 29, 22, 0.85);

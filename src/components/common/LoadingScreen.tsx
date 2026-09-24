@@ -96,14 +96,14 @@ export default function FancyFixedLoading({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35, ease: "easeInOut" }}
           className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
-          style={{ background: "#E8EDDF" }}
+          style={{ background: "#F1EFE1" }}
         >
           {/* Warm Olive radial background */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(74,86,56,0.08) 0%, rgba(183,146,117,0.03) 50%, transparent 75%)",
+                "radial-gradient(ellipse at center, rgba(110,112,72,0.08) 0%, rgba(184,137,120,0.04) 50%, transparent 75%)",
             }}
           />
 

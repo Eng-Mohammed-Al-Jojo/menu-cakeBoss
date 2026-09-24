@@ -51,7 +51,7 @@ export default function ItemCard({ item, index, categoryName, className }: Props
         {/* ─── Image ─── */}
         <div
           className="relative aspect-square overflow-hidden"
-          style={{ background: "linear-gradient(160deg, #EEF2E8 0%, #E7ECE1 40%, #D8E4CE 80%, #CBDABF 100%)" }}
+          style={{ background: "linear-gradient(160deg, #F5F5E9 0%, #E9E9D2 40%, #D9D9B6 80%, #C7C795 100%)" }}
         >
           <img
             src={imageSrc}

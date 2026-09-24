@@ -70,7 +70,7 @@ export default function CategoryItemsPage() {
   return (
     <div
       className="min-h-screen flex flex-col"
-      style={{ background: "linear-gradient(180deg, #F3F7F0 0%, #EDF4E9 40%, #E6EFE1 80%, #DEEAD7 100%)" }}
+      style={{ background: "var(--gradient-bg)" }}
     >
       {/* ═══ Back-Navigation Loading Overlay ═══ */}
       <AnimatePresence>
@@ -82,14 +82,14 @@ export default function CategoryItemsPage() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="fixed inset-0 z-[9999] flex flex-col items-center justify-center select-none"
-            style={{ background: "#E8EDDF", pointerEvents: "all" }}
+            style={{ background: "#F1EFE1", pointerEvents: "all" }}
           >
             {/* Warm radial background */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 background:
-                  "radial-gradient(circle at center, rgba(74,86,56,0.08) 0%, transparent 65%)",
+                  "radial-gradient(circle at center, rgba(110,112,72,0.10) 0%, transparent 65%)",
               }}
             />
 
@@ -99,7 +99,7 @@ export default function CategoryItemsPage() {
                 className="absolute rounded-full border"
                 style={{
                   inset: 0,
-                  borderColor: "rgba(74,86,56,0.15)",
+                  borderColor: "rgba(110,112,72,0.18)",
                 }}
                 animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.2, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -115,7 +115,7 @@ export default function CategoryItemsPage() {
                   cx="80"
                   cy="80"
                   r="72"
-                  stroke="rgba(74,86,56,0.08)"
+                  stroke="rgba(110,112,72,0.10)"
                   strokeWidth="2"
                   fill="none"
                 />
@@ -123,7 +123,7 @@ export default function CategoryItemsPage() {
                   cx="80"
                   cy="80"
                   r="72"
-                  stroke="#556B43"
+                  stroke="#7D8053"
                   strokeWidth="2.5"
                   fill="none"
                   strokeLinecap="round"

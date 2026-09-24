@@ -41,7 +41,7 @@ export default function MenuPage() {
   return (
     <div
       className="min-h-screen flex flex-col relative"
-      style={{ background: "linear-gradient(180deg, #F3F7F0 0%, #EDF4E9 40%, #E6EFE1 80%, #DEEAD7 100%)" }}>
+      style={{ background: "var(--gradient-bg)" }}>
 
 
       {/* Loading Screen */}
@@ -120,7 +120,7 @@ export default function MenuPage() {
       <header className="relative w-full overflow-hidden pt-12 pb-16 px-4 md:pt-16 md:pb-20">
 
         {/* Layered Luxury Backgrounds & Glows */}
-        <div className="absolute inset-0 -z-10" style={{ background: "linear-gradient(180deg, #DCE8D4 0%, #E5EFE0 50%, #F3F7F0 100%)", opacity: 0.95 }} />
+        <div className="absolute inset-0 -z-10" style={{ background: "linear-gradient(180deg, #E9E9D2 0%, #F1EFE1 50%, #FBF8F0 100%)", opacity: 0.95 }} />
 
         {/* Cohesive background ornament pattern (tying with the footer) */}
         <div
@@ -136,7 +136,7 @@ export default function MenuPage() {
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square max-w-[800px] -z-10 pointer-events-none opacity-40 blur-[100px]"
           style={{
-            background: "radial-gradient(circle, rgba(74, 86, 56, 0.20) 0%, rgba(183, 146, 117, 0.12) 50%, transparent 70%)"
+            background: "radial-gradient(circle, rgba(110, 112, 72, 0.18) 0%, rgba(184, 137, 120, 0.14) 50%, transparent 70%)"
           }}
         />
 
@@ -166,7 +166,7 @@ export default function MenuPage() {
             <div
               className="relative w-40 h-40 md:w-56 md:h-56 rounded-full p-[3px] shadow-2xl transition-transform duration-500 hover:scale-105 animate-logo-float"
               style={{
-                background: "linear-gradient(135deg, #C8D9B8 0%, #AABF96 50%, #D9CCBA 100%)",
+                background: "linear-gradient(135deg, #D9D9B6 0%, #9EA06B 50%, #D7B2A5 100%)",
                 boxShadow: "var(--shadow-premium), 0 0 0 1px rgba(255,255,255,0.6)",
               }}
             >
@@ -194,7 +194,7 @@ export default function MenuPage() {
             >
               <h1 className="text-4xl md:text-5xl font-black tracking-wider uppercase drop-shadow-sm select-none font-serif"
                 style={{
-                  background: "linear-gradient(135deg, #435435 0%, #222B1B 70%, #816148 100%)",
+                  background: "linear-gradient(135deg, #5E603F 0%, #343528 70%, #754A42 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}>
@@ -244,7 +244,7 @@ export default function MenuPage() {
         <div
           className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
           style={{
-            background: "linear-gradient(to bottom, transparent 0%, #F3F7F0 100%)",
+            background: "linear-gradient(to bottom, transparent 0%, #FBF8F0 100%)",
           }}
         />
       </header>

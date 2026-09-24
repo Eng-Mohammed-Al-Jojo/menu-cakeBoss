@@ -74,7 +74,7 @@ export default function ItemDetailModal({
             transition={{ duration: 0.28 }}
             className="absolute inset-0 cursor-pointer"
             style={{
-              background: "rgba(28, 18, 12, 0.72)",
+              background: "rgba(52, 53, 40, 0.72)",
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
             }}
@@ -92,7 +92,7 @@ export default function ItemDetailModal({
               background: "var(--bg-card)",
               border: "1px solid var(--border-gold)",
               boxShadow:
-                "0 32px 80px -8px rgba(28,18,12,0.55), 0 0 0 1px rgba(201,151,58,0.12)",
+                "0 32px 80px -8px rgba(52,53,40,0.55), 0 0 0 1px rgba(110,112,72,0.12)",
               maxHeight: "92vh",
             }}
             onClick={(e) => e.stopPropagation()}
@@ -102,7 +102,7 @@ export default function ItemDetailModal({
               className="absolute top-0 left-0 right-0 h-[2px] z-20 rounded-t-3xl"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent 0%, rgba(201,151,58,0.5) 25%, rgba(232,190,92,0.85) 42%, rgba(192,48,96,0.65) 50%, rgba(232,190,92,0.85) 58%, rgba(201,151,58,0.5) 75%, transparent 100%)",
+                  "linear-gradient(90deg, transparent 0%, rgba(158,160,107,0.5) 25%, rgba(199,199,149,0.85) 42%, rgba(184,137,120,0.65) 50%, rgba(199,199,149,0.85) 58%, rgba(158,160,107,0.5) 75%, transparent 100%)",
               }}
             />
 
@@ -119,7 +119,7 @@ export default function ItemDetailModal({
             {/* ── Hero image ── */}
             <div
               className="relative w-full shrink-0 overflow-hidden"
-              style={{ height: "240px", background: "linear-gradient(160deg, #EEF2E8 0%, #E7ECE1 40%, #D8E4CE 80%, #CBDABF 100%)" }}
+              style={{ height: "240px", background: "linear-gradient(160deg, #F5F5E9 0%, #E9E9D2 40%, #D9D9B6 80%, #C7C795 100%)" }}
             >
               <img
                 src={imageSrc}

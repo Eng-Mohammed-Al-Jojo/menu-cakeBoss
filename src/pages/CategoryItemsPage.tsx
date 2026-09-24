@@ -94,7 +94,7 @@ export default function CategoryItemsPage() {
             />
 
             {/* Animated logo */}
-            <div className="relative w-40 h-40 flex items-center justify-center">
+            <div className="relative w-48 h-48 flex items-center justify-center">
               <motion.div
                 className="absolute rounded-full border"
                 style={{
@@ -138,13 +138,13 @@ export default function CategoryItemsPage() {
               <motion.div
                 className="relative z-10 rounded-full flex items-center justify-center p-1"
                 style={{
-                  width: "88px",
-                  height: "88px",
+                  width: "128px",
+                  height: "128px",
                   background: "linear-gradient(145deg, #6B8457, #556B43, #B79275)",
                   boxShadow: "0 4px 24px rgba(74,86,56,0.35)",
                 }}
                 animate={{ scale: [0.97, 1.03, 0.97] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <div
                   className="w-full h-full rounded-full flex items-center justify-center overflow-hidden"
@@ -161,7 +161,7 @@ export default function CategoryItemsPage() {
 
             {/* Going back text */}
             <motion.div
-              className="mt-8 flex items-center gap-2"
+              className="mt-7 flex items-center gap-2"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}

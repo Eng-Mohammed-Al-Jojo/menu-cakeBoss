@@ -43,7 +43,6 @@ function BranchCard({ name, address, phone, whatsapp, index }: BranchCardProps) 
         background: "rgba(255, 255, 255, 0.82)",
         border: "1px solid rgba(110, 112, 72, 0.20)",
         boxShadow: "0 4px 20px -3px rgba(74, 75, 50, 0.08)",
-        backdropFilter: "blur(12px)",
       }}
     >
       {/* Branch header */}
@@ -156,7 +155,6 @@ function WorkingHoursCard({ title, days, hours, note, index }: WorkingHoursCardP
         background: "rgba(255, 255, 255, 0.82)",
         border: "1px solid rgba(110, 112, 72, 0.20)",
         boxShadow: "0 4px 20px -3px rgba(74, 75, 50, 0.08)",
-        backdropFilter: "blur(12px)",
       }}
     >
       {/* Header */}
@@ -251,7 +249,6 @@ function SectionBadge({ text }: { text: string }) {
           background: "rgba(255, 255, 255, 0.72)",
           border: "1px solid rgba(110, 112, 72, 0.22)",
           color: "#55563D",
-          backdropFilter: "blur(8px)",
         }}
       >
         <span className="w-1.5 h-1.5 rounded-full bg-[#7D8053]" />
@@ -267,21 +264,27 @@ export default function Footer() {
   const { i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
-  const [footer, setFooter] = useState({
+  const [footer, setFooter] = useState(() => ({
     facebook: "",
     instagram: "",
     tiktok: "",
     telegram: "",
+    ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "null"),
+  }));
+  const [complaintsWhatsapp, setComplaintsWhatsapp] = useState(
+    () => localStorage.getItem(COMPLAINTS_STORAGE_KEY) || ""
+  );
+  const [branches, setBranches] = useState<BranchCardProps[]>(() => {
+    const stored = localStorage.getItem(BRANCHES_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
   });
-  const [complaintsWhatsapp, setComplaintsWhatsapp] = useState("");
-  const [branches, setBranches] = useState<BranchCardProps[]>([]);
-  const [workingHours, setWorkingHours] = useState<WorkingHoursCardProps[]>([]);
+  const [workingHours, setWorkingHours] = useState<WorkingHoursCardProps[]>(() => {
+    const stored = localStorage.getItem(WORKING_HOURS_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  });
 
   useEffect(() => {
     // --- Footer info (social) ---
-    const localData = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (localData) setFooter(JSON.parse(localData));
-
     const footerRef = ref(db, "settings/footerInfo");
     const unsubFooter = onValue(footerRef, (snapshot) => {
       if (snapshot.exists()) {
@@ -292,9 +295,6 @@ export default function Footer() {
     });
 
     // --- Complaints WhatsApp ---
-    const localComplaints = localStorage.getItem(COMPLAINTS_STORAGE_KEY);
-    if (localComplaints) setComplaintsWhatsapp(localComplaints);
-
     const complaintsRef = ref(db, "settings/complaintsWhatsapp");
     const unsubComplaints = onValue(complaintsRef, (snapshot) => {
       if (snapshot.exists()) {
@@ -305,9 +305,6 @@ export default function Footer() {
     });
 
     // --- Branches ---
-    const localBranches = localStorage.getItem(BRANCHES_STORAGE_KEY);
-    if (localBranches) setBranches(JSON.parse(localBranches));
-
     const branchesRef = ref(db, "settings/branches");
     const unsubBranches = onValue(branchesRef, (snapshot) => {
       if (snapshot.exists()) {
@@ -324,9 +321,6 @@ export default function Footer() {
     });
 
     // --- Working Hours ---
-    const localWH = localStorage.getItem(WORKING_HOURS_STORAGE_KEY);
-    if (localWH) setWorkingHours(JSON.parse(localWH));
-
     const whRef = ref(db, "settings/workingHours");
     const unsubWH = onValue(whRef, (snapshot) => {
       if (snapshot.exists()) {
@@ -387,7 +381,7 @@ export default function Footer() {
   ].filter((s) => s.url);
 
   return (
-    <footer className="relative w-full mt-4 sm:mt-8">
+    <footer className="footer-surface relative w-full mt-4 sm:mt-8">
       {/* 
         ═══════════════════════════════════════════════════════════
         Curved Island Sheet Architecture:
@@ -407,7 +401,7 @@ export default function Footer() {
       >
         {/* Subtle decorative background glow */}
         <div
-          className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full pointer-events-none opacity-40 blur-3xl"
+          className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full pointer-events-none opacity-30"
           style={{
             background:
               "radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(217, 217, 182, 0.5) 60%, transparent 80%)",
@@ -428,10 +422,6 @@ export default function Footer() {
             className="flex flex-col items-center gap-3 mb-10"
           >
             <div className="relative group">
-              <div
-                className="absolute inset-0 blur-2xl rounded-full opacity-30 group-hover:opacity-45 transition-opacity duration-700"
-                style={{ background: "rgba(158, 160, 107, 0.5)" }}
-              />
               <img
                 src="/logo.png"
                 alt="CakeBoss Logo"
@@ -523,7 +513,6 @@ export default function Footer() {
                     background: "rgba(255, 255, 255, 0.88)",
                     border: "1px solid rgba(107, 132, 87, 0.22)",
                     boxShadow: "0 4px 20px -3px rgba(60, 75, 45, 0.07)",
-                    backdropFilter: "blur(12px)",
                   }}
                 >
                   <div className="flex items-center gap-3">

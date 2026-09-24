@@ -123,8 +123,8 @@ export default function FancyFixedLoading({
             <motion.div
               className="absolute rounded-full border"
               style={{
-                width: "200px",
-                height: "200px",
+                width: "256px",
+                height: "256px",
                 borderColor: "rgba(74,86,56,0.12)",
               }}
               animate={{ rotate: 360 }}
@@ -135,8 +135,8 @@ export default function FancyFixedLoading({
             <motion.div
               className="absolute rounded-full border"
               style={{
-                width: "164px",
-                height: "164px",
+                width: "216px",
+                height: "216px",
                 borderColor: "rgba(74,86,56,0.20)",
               }}
               animate={{ rotate: -360 }}
@@ -146,29 +146,29 @@ export default function FancyFixedLoading({
             {/* SVG spinner arc */}
             <svg
               className="absolute"
-              style={{ width: "148px", height: "148px", transform: "rotate(-90deg)" }}
-              viewBox="0 0 148 148"
+              style={{ width: "232px", height: "232px", transform: "rotate(-90deg)" }}
+              viewBox="0 0 240 240"
             >
               <circle
-                cx="74"
-                cy="74"
-                r="68"
+                cx="120"
+                cy="120"
+                r="112"
                 stroke="rgba(74,86,56,0.08)"
                 strokeWidth="1.5"
                 fill="none"
               />
               <motion.circle
-                cx="74"
-                cy="74"
-                r="68"
+                cx="120"
+                cy="120"
+                r="112"
                 stroke="url(#oliveGradient)"
                 strokeWidth="2.5"
                 fill="none"
                 strokeLinecap="round"
-                strokeDasharray={`${2 * Math.PI * 68 * 0.28} ${2 * Math.PI * 68 * 0.72}`}
+                strokeDasharray={`${2 * Math.PI * 112 * 0.28} ${2 * Math.PI * 112 * 0.72}`}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1.6, repeat: Infinity, ease: "linear" }}
-                style={{ transformOrigin: "74px 74px" }}
+                style={{ transformOrigin: "120px 120px" }}
               />
               <defs>
                 <linearGradient id="oliveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -183,8 +183,8 @@ export default function FancyFixedLoading({
             <motion.div
               className="relative z-10 rounded-full flex items-center justify-center p-1"
               style={{
-                width: "110px",
-                height: "110px",
+                width: "160px",
+                height: "160px",
                 background: "linear-gradient(145deg, #C8D9B8, #AABF96, #D9CCBA)",
                 boxShadow: "0 6px 32px rgba(74,86,56,0.40)",
               }}

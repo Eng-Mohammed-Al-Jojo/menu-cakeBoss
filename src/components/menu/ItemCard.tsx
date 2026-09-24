@@ -30,9 +30,8 @@ export default function ItemCard({ item, index, categoryName, className }: Props
           duration: 0.55,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className={`relative group flex flex-col overflow-hidden rounded-2xl ${className ?? "mb-20"} transition-all duration-400 bg-white border border-(--border-color) shadow-(--shadow-soft) ${
-          unavailable ? "opacity-60 grayscale-[0.7]" : "cursor-pointer hover:border-olive-500/40 hover:shadow-[0_10px_36px_-6px_rgba(74,86,56,0.16),0_4px_16px_-2px_rgba(183,146,117,0.1)] hover:-translate-y-1"
-        }`}
+        className={`relative group flex flex-col overflow-hidden rounded-2xl ${className ?? "mb-4"} transition-all duration-400 bg-white border border-(--border-color) shadow-(--shadow-soft) ${unavailable ? "opacity-60 grayscale-[0.7]" : "cursor-pointer hover:border-olive-500/40 hover:shadow-[0_10px_36px_-6px_rgba(74,86,56,0.16),0_4px_16px_-2px_rgba(183,146,117,0.1)] hover:-translate-y-1"
+          }`}
         onClick={() => {
           if (!unavailable) setIsDetailModalOpen(true);
         }}
@@ -104,23 +103,20 @@ export default function ItemCard({ item, index, categoryName, className }: Props
             {prices.map((p, idx) => (
               <div
                 key={idx}
-                className={`inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full ${
-                  unavailable
+                className={`inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full ${unavailable
                     ? "bg-(--bg-surface) border border-(--border-color)"
                     : "bg-olive-50 border border-olive-200/80 shadow-xs"
-                }`}
+                  }`}
               >
                 <span
-                  className={`text-sm font-black ${
-                    unavailable ? "text-(--text-muted)" : "text-olive-900"
-                  }`}
+                  className={`text-sm font-black ${unavailable ? "text-(--text-muted)" : "text-olive-900"
+                    }`}
                 >
                   {p.trim()}
                 </span>
                 <span
-                  className={`text-xs font-bold ${
-                    unavailable ? "text-(--text-muted)" : "text-olive-600"
-                  }`}
+                  className={`text-xs font-bold ${unavailable ? "text-(--text-muted)" : "text-olive-600"
+                    }`}
                 >
                   ₪
                 </span>

@@ -133,7 +133,7 @@ export default function Menu({ onLoadingChange }: Props) {
       initial={wasAlreadyLoaded ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="max-w-5xl mx-auto pb-20 px-1"
+      className="max-w-5xl mx-auto pb-6 px-1"
     >
       <div className="flex flex-col gap-4 sm:gap-6">
         {availableCategories.map((cat, index) => (

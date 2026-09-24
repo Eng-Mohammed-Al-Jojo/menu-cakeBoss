@@ -27,9 +27,8 @@ const ItemRow = React.memo(({ item, categoryName }: Props) => {
         layout
         whileHover={unavailable ? {} : { y: -3 }}
         whileTap={unavailable ? {} : { scale: 0.99 }}
-        className={`relative group flex flex-col sm:flex-row gap-4 p-4 sm:p-5 rounded-2xl transition-all duration-400 ${
-          unavailable ? "opacity-60 grayscale-[0.7]" : "cursor-pointer"
-        }`}
+        className={`relative group flex flex-col sm:flex-row gap-4 p-4 sm:p-5 rounded-2xl transition-all duration-400 ${unavailable ? "opacity-60 grayscale-[0.7]" : "cursor-pointer"
+          }`}
         style={{
           background: "var(--bg-card)",
           border: "1px solid var(--border-color)",

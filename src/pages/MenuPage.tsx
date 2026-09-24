@@ -41,7 +41,7 @@ export default function MenuPage() {
   return (
     <div
       className="min-h-screen flex flex-col relative"
-      style={{ background: "#E8EDDF" }}>
+      style={{ background: "linear-gradient(180deg, #F3F7F0 0%, #EDF4E9 40%, #E6EFE1 80%, #DEEAD7 100%)" }}>
 
 
       {/* Loading Screen */}
@@ -120,7 +120,7 @@ export default function MenuPage() {
       <header className="relative w-full overflow-hidden pt-12 pb-16 px-4 md:pt-16 md:pb-20">
 
         {/* Layered Luxury Backgrounds & Glows */}
-        <div className="absolute inset-0 -z-10" style={{ background: "linear-gradient(to bottom, #b7ec7aff, #C8D9B8, #B8CCAA)", opacity: 0.92 }} />
+        <div className="absolute inset-0 -z-10" style={{ background: "linear-gradient(180deg, #DCE8D4 0%, #E5EFE0 50%, #F3F7F0 100%)", opacity: 0.95 }} />
 
         {/* Cohesive background ornament pattern (tying with the footer) */}
         <div
@@ -244,14 +244,14 @@ export default function MenuPage() {
         <div
           className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
           style={{
-            background: "linear-gradient(to bottom, transparent 0%, var(--bg-page) 100%)",
+            background: "linear-gradient(to bottom, transparent 0%, #F3F7F0 100%)",
           }}
         />
       </header>
 
 
       {/* ═══════ MAIN CONTENT ═══════ */}
-      <main className="relative z-10 flex flex-col flex-1 pb-24">
+      <main className="relative z-10 flex flex-col flex-1 pb-12 md:pb-16">
         <div className="w-full max-w-5xl mx-auto px-4 md:px-8">
           <Menu onLoadingChange={handleLoadingChange} />
         </div>

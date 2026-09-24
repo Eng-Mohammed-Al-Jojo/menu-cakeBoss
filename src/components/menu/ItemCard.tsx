@@ -51,7 +51,8 @@ export default function ItemCard({ item, index, categoryName, className }: Props
 
         {/* ─── Image ─── */}
         <div
-          className="relative aspect-square overflow-hidden bg-(--bg-surface)"
+          className="relative aspect-square overflow-hidden"
+          style={{ background: "linear-gradient(160deg, #EEF2E8 0%, #E7ECE1 40%, #D8E4CE 80%, #CBDABF 100%)" }}
         >
           <img
             src={imageSrc}
@@ -61,7 +62,7 @@ export default function ItemCard({ item, index, categoryName, className }: Props
               const el = e.target as HTMLImageElement;
               el.src = "/logo.png";
               el.className =
-                "w-1/2 h-1/2 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15";
+                "w-1/2 h-1/2 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 drop-shadow-sm";
             }}
           />
 

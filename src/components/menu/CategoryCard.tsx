@@ -44,15 +44,16 @@ export default function CategoryCard({ category, index }: Props) {
                   parent.style.display = "flex";
                   parent.style.alignItems = "center";
                   parent.style.justifyContent = "center";
-                  parent.style.background = "var(--bg-surface)";
+                  parent.style.background = "linear-gradient(160deg, #EEF2E8 0%, #E7ECE1 40%, #D8E4CE 80%, #CBDABF 100%)";
                 }
               }}
             />
           ) : (
             <div
-              className="w-full h-full flex items-center justify-center bg-gradient-to-br from-(--bg-surface) to-(--bg-muted)"
+              className="w-full h-full flex items-center justify-center"
+              style={{ background: "linear-gradient(160deg, #EEF2E8 0%, #E7ECE1 40%, #D8E4CE 80%, #CBDABF 100%)" }}
             >
-              <img src="/logo.png" className="w-1/3 opacity-20" alt="fallback" />
+              <img src="/logo.png" className="w-1/3 opacity-35 drop-shadow-md" alt="fallback" />
             </div>
           )}
 

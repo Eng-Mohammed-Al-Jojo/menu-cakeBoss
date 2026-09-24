@@ -60,7 +60,7 @@ const ItemRow = React.memo(({ item, categoryName }: Props) => {
         {/* ─── Image ─── */}
         <div
           className="relative shrink-0 overflow-hidden rounded-xl w-full sm:w-24 h-44 sm:h-24"
-          style={{ background: "var(--bg-surface)", border: "1px solid var(--border-color)" }}
+          style={{ background: "linear-gradient(160deg, #EEF2E8 0%, #E7ECE1 40%, #D8E4CE 80%, #CBDABF 100%)", border: "1px solid var(--border-color)" }}
         >
           <img
             src={imageSrc}

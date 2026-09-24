@@ -119,7 +119,7 @@ export default function ItemDetailModal({
             {/* ── Hero image ── */}
             <div
               className="relative w-full shrink-0 overflow-hidden"
-              style={{ height: "240px", background: "var(--bg-surface)" }}
+              style={{ height: "240px", background: "linear-gradient(160deg, #EEF2E8 0%, #E7ECE1 40%, #D8E4CE 80%, #CBDABF 100%)" }}
             >
               <img
                 src={imageSrc}
@@ -129,7 +129,7 @@ export default function ItemDetailModal({
                   const el = e.target as HTMLImageElement;
                   el.src = "/logo.png";
                   el.className =
-                    "w-1/3 h-1/3 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20";
+                    "w-1/3 h-1/3 object-contain absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30 drop-shadow-md";
                 }}
               />
               {/* Gradient fade into card */}

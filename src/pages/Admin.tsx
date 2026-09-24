@@ -61,6 +61,8 @@ export default function Admin() {
   const [settings, setSettings] = useState({
     complaintsWhatsapp: "",
     footerInfo: { address: "", phone: "", whatsapp: "", facebook: "", instagram: "", tiktok: "" },
+    branches: [] as any[],
+    workingHours: [] as any[],
   });
 
   // ================= NOTIFICATIONS =================
@@ -102,6 +104,8 @@ export default function Admin() {
         const defaultSettings = {
           complaintsWhatsapp: "",
           footerInfo: { address: "", facebook: "", instagram: "", phone: "", tiktok: "", whatsapp: "" },
+          branches: [] as any[],
+          workingHours: [] as any[],
         };
         await set(settingsRef, defaultSettings);
         setSettings(defaultSettings);

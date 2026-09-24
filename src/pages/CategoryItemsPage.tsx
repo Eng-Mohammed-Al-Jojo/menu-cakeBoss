@@ -70,7 +70,7 @@ export default function CategoryItemsPage() {
   return (
     <div
       className="min-h-screen flex flex-col"
-      style={{ background: "#E8EDDF" }}
+      style={{ background: "linear-gradient(180deg, #F3F7F0 0%, #EDF4E9 40%, #E6EFE1 80%, #DEEAD7 100%)" }}
     >
       {/* ═══ Back-Navigation Loading Overlay ═══ */}
       <AnimatePresence>
